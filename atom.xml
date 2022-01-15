@@ -16,9 +16,9 @@
 &lt;ol&gt;
 &lt;li&gt;Not everyone plays &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; on Steam and Steam players cannot easily play with GOG players.&lt;/li&gt;
 &lt;li&gt;Some people live in apartments with shared wifi and the router is not accessible for setting up port forwarding etc.&lt;/li&gt;
-&lt;li&gt;Most people use wifi these days and if you host the game with your wifi network then everyone else will have additional latency&lt;/li&gt;
+&lt;li&gt;Most people use wifi these days and if you host the game with your wifi network then everyone else will have additional latency.&lt;/li&gt;
 &lt;li&gt;If one person is hosting the game and decides that they have had enough then no one else can play.&lt;/li&gt;
-&lt;li&gt;If you want to change game hosts you need to manually the game world between people&lt;/li&gt;
+&lt;li&gt;If you want to change game hosts you need to manually copy the game world between people.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Why would you want to set up your own private server over using a dedicated server platform that does all the work for you?&lt;/p&gt;
 &lt;ol&gt;
@@ -29,9 +29,9 @@
 &lt;ul&gt;
 &lt;li&gt;An &lt;a href=&#34;https://signup.azure.com/&#34;&gt;Azure Account&lt;/a&gt; for hosting your dedicated server.&lt;/li&gt;
 &lt;li&gt;An ssh client, I’m going to be using &lt;a href=&#34;https://github.com/subhra74/snowflake/releases/download/v1.0.4/snowflake.msi&#34;&gt;Snowflake&lt;/a&gt; but you can use &lt;a href=&#34;https://puttygen.com/download.php?val=4&#34;&gt;Putty&lt;/a&gt; if you prefer. I just find Snowflake to be easier to use in general.&lt;/li&gt;
-&lt;li&gt;A downloaded copy of Terraria on &lt;a href=&#34;https://store.steampowered.com/app/105600/Terraria/&#34;&gt;Steam&lt;/a&gt; or &lt;a href=&#34;https://www.gog.com/index.php/game/terraria&#34;&gt;GOG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A copy of Terraria on &lt;a href=&#34;https://store.steampowered.com/app/105600/Terraria/&#34;&gt;Steam&lt;/a&gt; or &lt;a href=&#34;https://www.gog.com/index.php/game/terraria&#34;&gt;GOG&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;Creating-And-Configuring-An-Azure-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-And-Configuring-An-Azure-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating And Configuring An Azure Virtual Machine&#34;&gt;&lt;/a&gt;Creating And Configuring An Azure Virtual Machine&lt;/h1&gt;&lt;h2 id=&#34;Creating-Your-First-Ubuntu-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-Your-First-Ubuntu-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating Your First Ubuntu Virtual Machine&#34;&gt;&lt;/a&gt;Creating Your First Ubuntu Virtual Machine&lt;/h2&gt;&lt;p&gt;Now I’m going to assume that you have subscribed to Azure and you have logged in.&lt;/p&gt;
+&lt;h1 id=&#34;Creating-And-Configuring-An-Azure-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-And-Configuring-An-Azure-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating And Configuring An Azure Virtual Machine&#34;&gt;&lt;/a&gt;Creating And Configuring An Azure Virtual Machine&lt;/h1&gt;&lt;h2 id=&#34;Creating-Your-First-Ubuntu-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-Your-First-Ubuntu-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating Your First Ubuntu Virtual Machine&#34;&gt;&lt;/a&gt;Creating Your First Ubuntu Virtual Machine&lt;/h2&gt;&lt;p&gt;Now I’m going to assume that you have created an Azure account and you have logged in.&lt;/p&gt;
 &lt;p&gt;The first thing that you going to need to do is to create a &lt;strong&gt;Resource Group&lt;/strong&gt;. Now a &lt;strong&gt;Resource Group&lt;/strong&gt; is just a grouping of your VMs, storage volumes, virtual network interfaces that you have in your Azure account.&lt;/p&gt;
 &lt;p&gt;To create a &lt;strong&gt;Resource Group&lt;/strong&gt; simply click on the &lt;strong&gt;Resource Groups&lt;/strong&gt; button.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;img/azure/home-screen-resource-groups-min.png&#34;&gt;&lt;/p&gt;
