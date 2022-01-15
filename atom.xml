@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://wolfyreload.github.io/tech-blog</id>
+    <title>Mike&#39;s Tech Tips</title>
+    <link href="https://wolfyreload.github.io/tech-blog" />
+    <updated>2022-01-15T10:25:41.000Z</updated>
+    <category term="Azure" />
+    <entry>
+        <id>https://wolfyreload.github.io/tech-blog/2021-01-15-terraria-dedicated-server/</id>
+        <title>Creating A Cloud Dedicated Server For Terraria In Azure</title>
+        <link rel="alternate" href="https://wolfyreload.github.io/tech-blog/2021-01-15-terraria-dedicated-server/"/>
+        <content type="html">&lt;p&gt;A guide on how to run your own dedicated &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; server in Azure.&lt;/p&gt;
+&lt;h1 id=&#34;Introduction&#34;&gt;&lt;a href=&#34;#Introduction&#34; class=&#34;headerlink&#34; title=&#34;Introduction&#34;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Skill Level Required:&lt;/strong&gt; Intermediate&lt;/p&gt;
+&lt;p&gt;Firstly, if you have never heard of &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; before, just do yourself a favour and buy a copy on &lt;a href=&#34;https://store.steampowered.com/app/105600/Terraria/&#34;&gt;Steam&lt;/a&gt; or &lt;a href=&#34;https://www.gog.com/index.php/game/terraria&#34;&gt;GOG&lt;/a&gt;. Now, &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; is a very fun game in single-player mode. But as with most games, it’s much more fun to play it with friends. &lt;/p&gt;
+&lt;p&gt;Now you might be asking yourself, why would I want to create my own dedicated server over just inviting my friends over Steam? Here are a few advantages of having a dedicated Terraria Server:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Not everyone plays &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; on Steam and Steam players cannot easily play with GOG players.&lt;/li&gt;
+&lt;li&gt;Some people live in apartments with shared wifi and the router is not accessible for setting up port forwarding etc.&lt;/li&gt;
+&lt;li&gt;Most people use wifi these days and if you host the game with your wifi network then everyone else will have additional latency&lt;/li&gt;
+&lt;li&gt;If one person is hosting the game and decides that they have had enough then no one else can play.&lt;/li&gt;
+&lt;li&gt;If you want to change game hosts you need to manually the game world between people&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Why would you want to set up your own private server over using a dedicated server platform that does all the work for you?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Well, I live in South Africa and I couldn’t find a dedicated server platform for this country and having the game hosted in the States will add too much latency&lt;/li&gt;
+&lt;li&gt;You looking at $10-$30 per month, regardless of how much you and your friends are playing. I’d rather have a server that I pay per hour and can turn off when it’s not needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;Getting-Started&#34;&gt;&lt;a href=&#34;#Getting-Started&#34; class=&#34;headerlink&#34; title=&#34;Getting Started&#34;&gt;&lt;/a&gt;Getting Started&lt;/h1&gt;&lt;p&gt;You going to need the following for this tutorial:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An &lt;a href=&#34;https://signup.azure.com/&#34;&gt;Azure Account&lt;/a&gt; for hosting your dedicated server.&lt;/li&gt;
+&lt;li&gt;An ssh client, I’m going to be using &lt;a href=&#34;https://github.com/subhra74/snowflake/releases/download/v1.0.4/snowflake.msi&#34;&gt;Snowflake&lt;/a&gt; but you can use &lt;a href=&#34;https://puttygen.com/download.php?val=4&#34;&gt;Putty&lt;/a&gt; if you prefer. I just find Snowflake to be easier to use in general.&lt;/li&gt;
+&lt;li&gt;A downloaded copy of Terraria on &lt;a href=&#34;https://store.steampowered.com/app/105600/Terraria/&#34;&gt;Steam&lt;/a&gt; or &lt;a href=&#34;https://www.gog.com/index.php/game/terraria&#34;&gt;GOG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;Creating-And-Configuring-An-Azure-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-And-Configuring-An-Azure-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating And Configuring An Azure Virtual Machine&#34;&gt;&lt;/a&gt;Creating And Configuring An Azure Virtual Machine&lt;/h1&gt;&lt;h2 id=&#34;Creating-Your-First-Ubuntu-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Creating-Your-First-Ubuntu-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Creating Your First Ubuntu Virtual Machine&#34;&gt;&lt;/a&gt;Creating Your First Ubuntu Virtual Machine&lt;/h2&gt;&lt;p&gt;Now I’m going to assume that you have subscribed to Azure and you have logged in.&lt;/p&gt;
+&lt;p&gt;The first thing that you going to need to do is to create a &lt;strong&gt;Resource Group&lt;/strong&gt;. Now a &lt;strong&gt;Resource Group&lt;/strong&gt; is just a grouping of your VMs, storage volumes, virtual network interfaces that you have in your Azure account.&lt;/p&gt;
+&lt;p&gt;To create a &lt;strong&gt;Resource Group&lt;/strong&gt; simply click on the &lt;strong&gt;Resource Groups&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/home-screen-resource-groups-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Next click on the &lt;strong&gt;Create&lt;/strong&gt; button&lt;/p&gt;
+&lt;p&gt;Now create a name for the &lt;strong&gt;Resource Group&lt;/strong&gt;. I went for “Terraria-LAN-RG” and select a region nearby.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/resource-group-create-form-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Select the &lt;strong&gt;Review + create&lt;/strong&gt; button, double-check your choices and if satisfied select the &lt;strong&gt;Create&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;Now we open our newly created &lt;strong&gt;Resource Group&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/find-resource-group-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Next, we want to create a &lt;strong&gt;Virtual Machine&lt;/strong&gt; resource. We click on the &lt;strong&gt;Create&lt;/strong&gt; button and we are going to select &lt;strong&gt;Ubuntu Server 20.04 LTS&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/create-a-resource-ubuntu-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Complete the form and make sure that you choose &lt;strong&gt;Standard B2&lt;/strong&gt; or any other option with at least 4GB of RAM for the &lt;strong&gt;Size&lt;/strong&gt; and &lt;strong&gt;Password&lt;/strong&gt; for &lt;strong&gt;Authentication Type&lt;/strong&gt;. Make sure you create a nice strong password for the virtual machine. Keep the username and password handy as you are going to need them for the rest of this tutorial.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/vm-create-form-part1-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Select the &lt;strong&gt;Next: Disks&lt;/strong&gt; button&lt;/p&gt;
+&lt;p&gt;Change the &lt;strong&gt;OS disk type&lt;/strong&gt; to &lt;strong&gt;Standard HDD&lt;/strong&gt; since we don’t need fast disk speeds for a Terraria server.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/vm-create-form-part2-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Select &lt;strong&gt;Review + create&lt;/strong&gt; button, double-check your settings and select the &lt;strong&gt;Create&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;You’ll need to wait 2 minutes or so for Azure to create your virtual machine.&lt;/p&gt;
+&lt;p&gt;Once the deployment is complete, select the &lt;strong&gt;Go to resource&lt;/strong&gt; button&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/deployment-go-to-resource-min.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Configuring-Your-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Configuring-Your-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Configuring Your Virtual Machine&#34;&gt;&lt;/a&gt;Configuring Your Virtual Machine&lt;/h2&gt;&lt;p&gt;The first thing we are going to do is give our virtual machine a &lt;strong&gt;DNS name&lt;/strong&gt; by clicking on the &lt;strong&gt;Configure&lt;/strong&gt; link under &lt;strong&gt;Networking&lt;/strong&gt; since IP addresses are much harder to remember&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-overview-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Change the &lt;strong&gt;IP address assignment&lt;/strong&gt; to &lt;strong&gt;Static&lt;/strong&gt; and give the server any DNS name that you like, I called mine &lt;strong&gt;terraria-lan&lt;/strong&gt;. Now click on the &lt;strong&gt;Save&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-setup-dns-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Go back to the &lt;strong&gt;Overview&lt;/strong&gt; screen of your &lt;strong&gt;Virtual Machine&lt;/strong&gt;. Take note of your &lt;strong&gt;Public IP address&lt;/strong&gt; and &lt;strong&gt;DNS name&lt;/strong&gt; as you’ll need these later.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-ip-dns-name-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Next, we need to go to &lt;strong&gt;Networking&lt;/strong&gt; and open port &lt;strong&gt;7777&lt;/strong&gt; (Terraria’s default port)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-networking-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Select &lt;strong&gt;Add inbound port add&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;Set the &lt;strong&gt;Destination port ranges&lt;/strong&gt; to &lt;strong&gt;7777&lt;/strong&gt; followed by the &lt;strong&gt;Add&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-networking-new-port-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The last thing that you might want to change is the &lt;strong&gt;Auto-Shutdown&lt;/strong&gt; under &lt;strong&gt;Operations&lt;/strong&gt; in the side menu. Having the &lt;strong&gt;Auto Shutdown&lt;/strong&gt; will save you money but make sure you select a time that you are unlikely to be mid-game.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/azure/virtual-machine-auto-shutdown-min.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;Running-Your-Server&#34;&gt;&lt;a href=&#34;#Running-Your-Server&#34; class=&#34;headerlink&#34; title=&#34;Running Your Server&#34;&gt;&lt;/a&gt;Running Your Server&lt;/h1&gt;&lt;p&gt;Now that your &lt;strong&gt;Virtual Machine&lt;/strong&gt; is up and running.&lt;/p&gt;
+&lt;p&gt;We need to do the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Getting the server files from the Terraria website&lt;/li&gt;
+&lt;li&gt;Transfer the server files to your new virtual machine&lt;/li&gt;
+&lt;li&gt;Starting up the server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;Getting-The-Server-Files&#34;&gt;&lt;a href=&#34;#Getting-The-Server-Files&#34; class=&#34;headerlink&#34; title=&#34;Getting The Server Files&#34;&gt;&lt;/a&gt;Getting The Server Files&lt;/h2&gt;&lt;p&gt;Download the latest version of &lt;a href=&#34;https://terraria.fandom.com/wiki/Server#Downloads&#34;&gt;Terraria Server&lt;/a&gt;, at the time of writing it was a version &lt;a href=&#34;https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip&#34;&gt;1.4.3.2&lt;/a&gt; and extract it to somewhere convenient on your computer. I went with &lt;strong&gt;c:\temp\terraria-server-1432&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Open the subfolder &lt;strong&gt;1432\Linux&lt;/strong&gt; and it should look something like the screenshot below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/server-files-min.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Transfering-The-Server-Files-To-Your-Virtual-Machine&#34;&gt;&lt;a href=&#34;#Transfering-The-Server-Files-To-Your-Virtual-Machine&#34; class=&#34;headerlink&#34; title=&#34;Transfering The Server Files To Your Virtual Machine&#34;&gt;&lt;/a&gt;Transfering The Server Files To Your Virtual Machine&lt;/h2&gt;&lt;p&gt;Fire up &lt;strong&gt;Snowflake&lt;/strong&gt;. Add a &lt;strong&gt;New Connection&lt;/strong&gt;. Create a &lt;strong&gt;New Site&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Name&lt;/strong&gt; - Any name you want to call it. I called my site &lt;strong&gt;Terraria-Server&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Host&lt;/strong&gt; - the DNS name that you captured earlier&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User&lt;/strong&gt; - the username you created for your VM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Password&lt;/strong&gt; - the password you created for your VM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terraria Server&lt;/strong&gt; files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/snowflake-config-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Click on the &lt;strong&gt;Connect&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;You’ll get a notification that looks something like this. Click on &lt;strong&gt;Yes&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/ssh-fingerprint-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the &lt;strong&gt;Files&lt;/strong&gt; section in &lt;strong&gt;SnowFlake&lt;/strong&gt;. Change your path to the location where you extracted your &lt;strong&gt;Terraria Server&lt;/strong&gt; files.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/file-copy-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Just drag and drop your files from your Windows machine (on the right) to your Azure Ubuntu Server on the left. Select &lt;strong&gt;Yes&lt;/strong&gt;. Then select &lt;strong&gt;OK&lt;/strong&gt;. This might take a minute or two to complete.&lt;/p&gt;
+&lt;h2 id=&#34;Setting-Up-You-Server&#34;&gt;&lt;a href=&#34;#Setting-Up-You-Server&#34; class=&#34;headerlink&#34; title=&#34;Setting Up You Server&#34;&gt;&lt;/a&gt;Setting Up You Server&lt;/h2&gt;&lt;p&gt;Next, go to the &lt;strong&gt;Terminal&lt;/strong&gt; tab in &lt;strong&gt;SnowFlake&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/terminal-part1-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now you can run any Linux command line commands here on your Ubuntu Virtual Machine. The first one we going to use is the &lt;strong&gt;ls&lt;/strong&gt; command see confirm that we copied over all the files correctly.&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# Expected output&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# FNA.dll  FNA.dll.config  Terraria-min.png  TerrariaServer  TerrariaServer.bin.x86_64...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;If we can see all the files, we need to make the &lt;strong&gt;TerrariaServer.bin.x86_64&lt;/strong&gt; file executable. We do this with the &lt;strong&gt;chmod&lt;/strong&gt; command below&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;chmod +x TerrariaServer.bin.x86_64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now we can start our server by running &lt;strong&gt;TerrariaServer.bin.x86_64&lt;/strong&gt;. Note the “./“ prefix make sure you include that.&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;./TerrariaServer.bin.x86_64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Follow the prompts for creating your server&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/world-setup-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Follow the prompts and if you see the following:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/running/server-up-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Note: In future, you’ll just need to run the command below to run your server. &lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;./TerrariaServer.bin.x86_64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;Connecting-To-Your-New-Server&#34;&gt;&lt;a href=&#34;#Connecting-To-Your-New-Server&#34; class=&#34;headerlink&#34; title=&#34;Connecting To Your New Server&#34;&gt;&lt;/a&gt;Connecting To Your New Server&lt;/h2&gt;&lt;p&gt;Now we start up &lt;strong&gt;Terraria&lt;/strong&gt;. Select &lt;strong&gt;Multiplayer&lt;/strong&gt; followed by &lt;strong&gt;Join via IP&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;Select/Create your Character. Note that Classic characters can only play in Classic worlds, same for Journeyman characters.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/terraria/server-ip-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Keep the default &lt;strong&gt;Port&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Fill in the Server password&lt;/p&gt;
+&lt;p&gt;Keep an eye on the server terminal window for any errors and to see who cannot join and why.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/terraria/server-debug-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If all goes well you’ll be in the game and your friends can join.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/terraria/play-min.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Have fun!!!&lt;/p&gt;
+</content>
+        <category term="Azure" />
+        <updated>2022-01-15T10:25:41.000Z</updated>
+    </entry>
+</feed>
