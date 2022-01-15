@@ -7,7 +7,7 @@
     <category term="Azure" />
     <entry>
         <id>https://wolfyreload.github.io/tech-blog/2021-01-15-terraria-dedicated-server/</id>
-        <title>Creating A Cloud Dedicated Server For Terraria In Azure</title>
+        <title>Creating A Dedicated Cloud Server For Terraria In Azure</title>
         <link rel="alternate" href="https://wolfyreload.github.io/tech-blog/2021-01-15-terraria-dedicated-server/"/>
         <content type="html">&lt;p&gt;A guide on how to run your own dedicated &lt;a href=&#34;https://www.terraria.org/&#34;&gt;Terraria&lt;/a&gt; server in Azure.&lt;/p&gt;
 &lt;h1 id=&#34;Introduction&#34;&gt;&lt;a href=&#34;#Introduction&#34; class=&#34;headerlink&#34; title=&#34;Introduction&#34;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Skill Level Required:&lt;/strong&gt; Intermediate&lt;/p&gt;
