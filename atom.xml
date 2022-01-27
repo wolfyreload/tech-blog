@@ -4,8 +4,8 @@
     <title>Mike&#39;s Tech Tips</title>
     <link href="https://wolfyreload.github.io/tech-blog" />
     <updated>2022-01-17T15:16:23.000Z</updated>
-    <category term="Azure" />
     <category term="Performance" />
+    <category term="Azure" />
     <entry>
         <id>https://wolfyreload.github.io/tech-blog/2021-01-27-manictime/</id>
         <title>Managing Your Time With ManicTime</title>
@@ -22,7 +22,7 @@
 &lt;/ul&gt;
 &lt;p&gt;If you answered yes to any of the above questions, and you work on a computer most of the day, then &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; is there to answer all of the above questions.&lt;/p&gt;
 &lt;h1 id=&#34;ManicTime-Basics&#34;&gt;&lt;a href=&#34;#ManicTime-Basics&#34; class=&#34;headerlink&#34; title=&#34;ManicTime Basics&#34;&gt;&lt;/a&gt;ManicTime Basics&lt;/h1&gt;&lt;p&gt;In a nutshell, all that &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; does is track the duration and time that each window is focused for. So if you answer a call in Teams, reply to emails or get some development work done you can figure out everything that happened after it’s happened and you no longer have to guess.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-time-main-screen.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech-blog/images/2022-01-27/manic-time-main-screen.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let us break the UI down into its pieces:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The first row is custom &lt;strong&gt;Tags&lt;/strong&gt; and comments for each task that you’ve performed for the day. More on this later.&lt;/li&gt;
@@ -31,11 +31,11 @@
 &lt;li&gt;The &lt;strong&gt;Documents&lt;/strong&gt; tab shows the name of the currently opened browser window or the current file open in a program like Visual Studio or VSCode.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you click on any tab, the reporting information changes to that tab. e.g. if I select the &lt;strong&gt;Applications&lt;/strong&gt; tab I can now see how long each window was focused for.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-application-details.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech-blog/images/2022-01-27/manic-application-details.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now where the superpowers come in with this tool is one can filter on the results to get an idea of when they started and ended a task. e.g. I’m going to filter on “manictime.md” I can see when I started writing this blog post&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-application-filter.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech-blog/images/2022-01-27/manic-application-filter.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Then I can just highlight and tag the time. First, we type in the project we want to assign the time to, in this case, “Blog” and add a note of what you were doing.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-tag-time.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech-blog/images/2022-01-27/manic-tag-time.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;You can also easily drag and drop the start and end times for each tag. &lt;/p&gt;
 &lt;p&gt;Finally, I can can then use the details in the captured tags for completing my timesheet for the day.&lt;/p&gt;
 &lt;h1 id=&#34;ManicTime-Professional-Edition&#34;&gt;&lt;a href=&#34;#ManicTime-Professional-Edition&#34; class=&#34;headerlink&#34; title=&#34;ManicTime Professional Edition&#34;&gt;&lt;/a&gt;ManicTime Professional Edition&lt;/h1&gt;&lt;p&gt;These are are the core features of &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; and all included in the free version. I haven’t needed the professional version of the tool but it does have some enticing features such as:&lt;/p&gt;
