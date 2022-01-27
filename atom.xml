@@ -26,7 +26,7 @@
 &lt;p&gt;Let us break the UI down into its pieces:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The first row is custom &lt;strong&gt;Tags&lt;/strong&gt; and comments for each task that you’ve performed for the day. More on this later.&lt;/li&gt;
-&lt;li&gt;The next row is unlabeled but it measures &lt;strong&gt;Active&lt;/strong&gt; vs &lt;strong&gt;Inactive&lt;/strong&gt; time - e.g. when your computer is locked or you step away for 10 minutes or more vs working on the computer.&lt;/li&gt;
+&lt;li&gt;The next row is &lt;strong&gt;Computer Usage&lt;/strong&gt; which measures &lt;strong&gt;Active&lt;/strong&gt; (working on the computer) vs &lt;strong&gt;Inactive&lt;/strong&gt; time (e.g. when your computer is locked or you step away for 10 minutes or more).&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;Applications&lt;/strong&gt; tab shows the focused window throughout the whole day&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;Documents&lt;/strong&gt; tab shows the name of the currently opened browser window or the current file open in a program like Visual Studio or VSCode.&lt;/li&gt;
 &lt;/ul&gt;
