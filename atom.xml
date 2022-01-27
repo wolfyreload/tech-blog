@@ -3,8 +3,54 @@
     <id>https://wolfyreload.github.io/tech-blog</id>
     <title>Mike&#39;s Tech Tips</title>
     <link href="https://wolfyreload.github.io/tech-blog" />
-    <updated>2022-01-15T10:25:41.000Z</updated>
+    <updated>2022-01-17T15:16:23.000Z</updated>
     <category term="Azure" />
+    <category term="Performance" />
+    <entry>
+        <id>https://wolfyreload.github.io/tech-blog/2021-01-27-manictime/</id>
+        <title>Managing Your Time With ManicTime</title>
+        <link rel="alternate" href="https://wolfyreload.github.io/tech-blog/2021-01-27-manictime/"/>
+        <content type="html">&lt;p&gt;A guide on how to save time in capturing timesheets with the assistance of &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;Introduction&#34;&gt;&lt;a href=&#34;#Introduction&#34; class=&#34;headerlink&#34; title=&#34;Introduction&#34;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Skill level required:&lt;/strong&gt; Beginner&lt;/p&gt;
+&lt;p&gt;Consider these questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Did I start start my day at 7:30 AM or 7:45 AM?&lt;/li&gt;
+&lt;li&gt;Did I spend 15 minutes or 45 minutes looking at a support ticket?&lt;/li&gt;
+&lt;li&gt;How long was I out for my lunch break?&lt;/li&gt;
+&lt;li&gt;Am I working too many hours or too few hours?&lt;/li&gt;
+&lt;li&gt;When I forget to complete my timesheet every day, how do I figure out what I did?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you answered yes to any of the above questions, and you work on a computer most of the day, then &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; is there to answer all of the above questions.&lt;/p&gt;
+&lt;h1 id=&#34;ManicTime-Basics&#34;&gt;&lt;a href=&#34;#ManicTime-Basics&#34; class=&#34;headerlink&#34; title=&#34;ManicTime Basics&#34;&gt;&lt;/a&gt;ManicTime Basics&lt;/h1&gt;&lt;p&gt;In a nutshell, all that &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; does is track the duration and time that each window is focused for. So if you answer a call in Teams, reply to emails or get some development work done you can figure out everything that happened after it’s happened and you no longer have to guess.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-time-main-screen.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Let us break the UI down into its pieces:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The first row is custom &lt;strong&gt;Tags&lt;/strong&gt; and comments for each task that you’ve performed for the day. More on this later.&lt;/li&gt;
+&lt;li&gt;The next row is unlabeled but it measures &lt;strong&gt;Active&lt;/strong&gt; vs &lt;strong&gt;Inactive&lt;/strong&gt; time - e.g. when your computer is locked or you step away for 10 minutes or more vs working on the computer.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Applications&lt;/strong&gt; tab shows the focused window throughout the whole day&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Documents&lt;/strong&gt; tab shows the name of the currently opened browser window or the current file open in a program like Visual Studio or VSCode.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you click on any tab, the reporting information changes to that tab. e.g. if I select the &lt;strong&gt;Applications&lt;/strong&gt; tab I can now see how long each window was focused for.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-application-details.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now where the superpowers come in with this tool is one can filter on the results to get an idea of when they started and ended a task. e.g. I’m going to filter on “manictime.md” I can see when I started writing this blog post&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-application-filter.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Then I can just highlight and tag the time. First, we type in the project we want to assign the time to, in this case, “Blog” and add a note of what you were doing.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/2022-01-27/manic-tag-time.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;You can also easily drag and drop the start and end times for each tag. &lt;/p&gt;
+&lt;p&gt;Finally, I can can then use the details in the captured tags for completing my timesheet for the day.&lt;/p&gt;
+&lt;h1 id=&#34;ManicTime-Professional-Edition&#34;&gt;&lt;a href=&#34;#ManicTime-Professional-Edition&#34; class=&#34;headerlink&#34; title=&#34;ManicTime Professional Edition&#34;&gt;&lt;/a&gt;ManicTime Professional Edition&lt;/h1&gt;&lt;p&gt;These are are the core features of &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; and all included in the free version. I haven’t needed the professional version of the tool but it does have some enticing features such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Periodic screenshots (every 60 seconds by default) which help you guess what you were busy with at that time.&lt;/li&gt;
+&lt;li&gt;A reminder to capture what you did in the past x number of minutes.&lt;/li&gt;
+&lt;li&gt;Automatic time tagging using custom rules.&lt;/li&gt;
+&lt;li&gt;A whole client/server system for working with a team.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;Conclusion&#34;&gt;&lt;a href=&#34;#Conclusion&#34; class=&#34;headerlink&#34; title=&#34;Conclusion&#34;&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;&lt;p&gt;Even the free edition of &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; is very useful. You know exactly when you started; how long your lunch break was etc… answering all of the questions we started with. When you get to the end of the day, you know exactly what you did, and timesheets become a breeze. &lt;/p&gt;
+&lt;p&gt;What are you waiting for? Give &lt;a href=&#34;https://www.manictime.com/&#34;&gt;ManicTime&lt;/a&gt; a try.&lt;/p&gt;
+</content>
+        <category term="Performance" />
+        <updated>2022-01-17T15:16:23.000Z</updated>
+    </entry>
     <entry>
         <id>https://wolfyreload.github.io/tech-blog/2021-01-15-terraria-dedicated-server/</id>
         <title>Creating A Dedicated Cloud Server For Terraria In Azure</title>
