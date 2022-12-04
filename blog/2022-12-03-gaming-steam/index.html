@@ -1,0 +1,511 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Mike's Tech Tips">
+      
+      
+        <meta name="author" content="Michael van Antwerpen">
+      
+      
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2022-12-03-gaming-steam/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Gaming on Pop_OS! with Steam - Mike's Tech Tips</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-header__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mike's Tech Tips
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gaming on Pop_OS! with Steam
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wolfyreload/tech-blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-nav__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Mike's Tech Tips
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wolfyreload/tech-blog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-15-terraria-dedicated-server/" class="md-nav__link">
+        Creating A Dedicated Cloud Server For Terraria In Azure
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-27-manictime/" class="md-nav__link">
+        Taming Your Timesheet With ManicTime
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-11-23-windows-to-linux/" class="md-nav__link">
+        Ditching Windows and Switching to Linux
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-steam" class="md-nav__link">
+    Installing Steam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-steam-play" class="md-nav__link">
+    Enabling Steam Play
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-proton-glorious-eggroll" class="md-nav__link">
+    Installing Proton Glorious Eggroll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa" class="md-nav__link">
+    Q/A
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/wolfyreload/tech-blog/edit/master/docs/blog/2022-12-03-gaming-steam.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>Gaming on Pop_OS! with Steam</h1>
+
+<p>If you love PC gaming, I'm going to guess that you game using Steam for your
+gaming fix. Fortunately, Steam runs really well on Linux. With a few tricks you
+should be able to play almost all your games in your Steam library.</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Skill level required: Intermediate</p>
+<p>Here I'm going to assume that you've installed <strong>POP!_OS</strong>. If you haven't
+followed the guide for installing POP!_OS on their website
+<a href="https://support.system76.com/articles/install-pop">https://support.system76.com/articles/install-pop</a>.</p>
+<p>The only things I would change in the guide is:</p>
+<ul>
+<li>Using <a href="https://ventoy.net/en/doc_start.html">Ventoy</a> for the boot media
+    rather than Etcher. Mostly, because I use Ventoy for trying out multiple
+    distros from a single flash drive, so it's already available as an
+    installation media.</li>
+<li>If you're creating a gaming pc/laptop you might not want your hard drive
+    encrypted as this will slow down your game loading times a little. So when
+    you get to the <strong>Drive Encryption</strong> section in the installer select the
+    <strong>Don't Encrypt</strong> option.</li>
+</ul>
+<p>Once you have <strong>POP!_OS</strong> installed, we'll have a look at installing Steam and
+getting your game library running.</p>
+<h2 id="installing-steam">Installing Steam<a class="headerlink" href="#installing-steam" title="Permanent link">&para;</a></h2>
+<p>Now that you have a freshly installed machine, don't install Steam using the
+<strong>Pop!_Shop</strong> as this will install the Steam flatpak which didn't let me easily
+store my games on another disk. Visit Steam's website
+<a href="https://store.steampowered.com">https://store.steampowered.com</a> and click on the <strong>Install Steam</strong> button. You
+should get a <strong>steam_latest.deb</strong> file in your Downloads folder. You can think
+of a <strong>.deb</strong> file as a <strong>.exe</strong> or <strong>.msi</strong> installer file for Pop!_OS (any
+distro derived from Debian actually). Double-click on the <strong>steam_latest.deb</strong>
+file, and it will open in <strong>Eddy</strong> (the Pop!_OS .deb installer tool). Simply
+click on the <strong>Install</strong> button, and it will start the installation for
+<strong>Steam</strong>.</p>
+<p><img alt="" src="../../img/2022-12-03/install-steam-eddy.png" /></p>
+<h2 id="enabling-steam-play">Enabling Steam Play<a class="headerlink" href="#enabling-steam-play" title="Permanent link">&para;</a></h2>
+<p>Now that I had Steam installed, you can just launch Steam using the application
+launcher (by pressing the <strong>Windows Key</strong>).</p>
+<p><img alt="" src="../../img/2022-12-03/steam-launcher-menu.png" /></p>
+<p>On my first launch of Steam, I was disappointed to see that my game library had
+shrunk down to around &frac14; of titles that were available on Windows. After some
+googling I discovered that you need to enable something called "Steam Play" for
+your games to run on Linux. Fortunately, this was a simple thing to fix.</p>
+<p>Open <strong>Steam &gt;&gt; Settings &gt;&gt; Steam Play</strong></p>
+<p>Now, you want to tick two options <strong>Enable Steam Play for supported titles</strong> and
+<strong>Enable Steam Play for all other titles</strong></p>
+<p><img alt="" src="../../img/2022-12-03/enable-steam-play.png" /></p>
+<p>Once you click on <strong>OK</strong>, you'll be prompted to restart Steam.</p>
+<h2 id="installing-proton-glorious-eggroll">Installing Proton Glorious Eggroll<a class="headerlink" href="#installing-proton-glorious-eggroll" title="Permanent link">&para;</a></h2>
+<p>Now, I could see my entire game library in Steam on Linux. Like, many other
+people, the first thing I did was launch Skyrim and I soon discovered that I had
+no sound in the game and had some other weird glitches.</p>
+<p>There is one more piece of the puzzle that you need to be able to play 99% of
+your library and that is <strong>Proton Glorious Eggroll</strong> (Proton GE for short). This
+tool is a heavily tweaked version of Proton which Steam uses for Steam Play. To
+download it, navigate to <a href="https://github.com/GloriousEggroll/proton-ge-custom">https://github.com/GloriousEggroll/proton-ge-custom</a></p>
+<p>Grab the latest release of Proton GE</p>
+<p><img alt="" src="../../img/2022-12-03/proton-ge-download1.png" /></p>
+<p>Download the latest binaries (not the source code)</p>
+<p><img alt="" src="../../img/2022-12-03/proton-ge-download2.png" /></p>
+<p>Double-click on the <strong>GE-Proton7-41.tar.gz</strong> file in your Downloads folder.
+Click on the <strong>Extract</strong> button in the top left.</p>
+<p>Select your <strong>Home</strong> folder</p>
+<p><img alt="" src="../../img/2022-12-03/home-folder.png" /></p>
+<p>Now what no one tells you is that you need to press <strong>Ctrl+H</strong> to show hidden
+folders (any folder or file with a dot in-front of the name is a hidden folder).
+Then select <strong>.steam &gt;&gt; steam</strong>. Now create a new folder called
+<strong>compatibilitytools.d</strong>. You can add additional folders by "Create Folder" icon
+just below the <strong>Extract</strong> button.</p>
+<p>Your screen should look as follows when you are ready to extract Proton GE by
+clicking on the <strong>Extract</strong> button.</p>
+<p><img alt="" src="../../img/2022-12-03/proton-ge-extract1.png" /></p>
+<p>If you open your file manager and navigate to your new <strong>GE-Proton7-41</strong> folder
+and your screen looks as follows, you are on the right track</p>
+<p><img alt="" src="../../img/2022-12-03/proton-ge-extract2.png" /></p>
+<p>Next, restart Steam and open the properties of any game. Select the
+<strong>Compatibility</strong> tab. Tick the <strong>Force the use of a specific Steam Play
+compatibility tool</strong>. Then select <strong>GE-Proton7-41</strong>. Launch your game and if you
+are lucky, 99% of the time the game will launch and play without issues.</p>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If you are using a gaming laptop, most gaming laptops have hybrid graphics.
+    For the best gaming experience you going to want to select the dedicated
+    graphics card option in your power settings.
+    <img alt="" src="../../img/2022-12-03/battery-dedicated-graphics.png" /></li>
+<li>If you are struggling to get a game to work, have a look at ProtonDB
+    <a href="https://www.protondb.com">https://www.protondb.com</a> and see if other's have managed to play the game
+    on Linux and what tweaks were needed to play the game.</li>
+</ul>
+<h2 id="qa">Q/A<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Why didn't you just use the flatpak for Steam in the Pop!_Shop? Working
+    with Steam games that you want to have installed on another drive is much
+    harder and requires creating linked folders etc.</li>
+<li>Why are my games not working when I'm sharing a common game library with
+    Windows on another drive? Steam Play does not work correctly with ntfs
+    formatted drives.</li>
+<li>My game is immediately crashing on launch? Same as above, have a look at
+    ProtonDB and see what others needed to do to get the game working.</li>
+<li>Do you know that you could have completed your whole guide by using 4 lines
+    of bash script? Yes, I am aware of this but this post is intended to teach
+    rather than just get to the end goal.</li>
+<li>Why are you calling the OS Linux don't you know that Linux is just a kernel,
+    and it's actually GNU/Linux? I am aware of that.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Michael van Antwerpen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
