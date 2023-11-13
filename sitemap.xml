@@ -2,27 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://wolfyreload.github.io/tech-blog/</loc>
-         <lastmod>2022-12-04</lastmod>
+         <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wolfyreload.github.io/tech-blog/blog/2021-01-15-terraria-dedicated-server/</loc>
-         <lastmod>2022-12-04</lastmod>
+         <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wolfyreload.github.io/tech-blog/blog/2021-01-27-manictime/</loc>
-         <lastmod>2022-12-04</lastmod>
+         <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wolfyreload.github.io/tech-blog/blog/2022-11-23-windows-to-linux/</loc>
-         <lastmod>2022-12-04</lastmod>
+         <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wolfyreload.github.io/tech-blog/blog/2022-12-03-gaming-steam/</loc>
-         <lastmod>2022-12-04</lastmod>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wolfyreload.github.io/tech-blog/blog/2022-12-10-popos-vs-vpn/</loc>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wolfyreload.github.io/tech-blog/blog/2022-12-21-samba/</loc>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wolfyreload.github.io/tech-blog/blog/2023-02-17-docker/</loc>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wolfyreload.github.io/tech-blog/blog/2023-05-06-the-linux-experience/</loc>
+         <lastmod>2023-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wolfyreload.github.io/tech-blog/blog/2023-11-13-virtualbox/</loc>
+         <lastmod>2023-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

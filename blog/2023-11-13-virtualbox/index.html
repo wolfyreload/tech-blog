@@ -1,0 +1,648 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Mike's Tech Tips">
+      
+      
+        <meta name="author" content="Michael van Antwerpen">
+      
+      
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2023-11-13-virtualbox/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>2023 11 13 virtualbox - Mike's Tech Tips</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-header__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mike's Tech Tips
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2023 11 13 virtualbox
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wolfyreload/tech-blog.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-nav__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Mike's Tech Tips
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wolfyreload/tech-blog.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-15-terraria-dedicated-server/" class="md-nav__link">
+        Creating A Dedicated Cloud Server For Terraria In Azure
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-27-manictime/" class="md-nav__link">
+        Taming Your Timesheet With ManicTime
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-11-19-windows-to-linux.md" class="md-nav__link">
+        Ditching Windows and Switching to Linux
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-virtualbox" class="md-nav__link">
+    Installing VirtualBox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-windows-10-in-virtualbox" class="md-nav__link">
+    Installing Windows 10 in VirtualBox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-virtualbox-guest-additions" class="md-nav__link">
+    Installing VirtualBox Guest Additions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-steps" class="md-nav__link">
+    Optional Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debloat-windows" class="md-nav__link">
+    Debloat Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-visual-effects" class="md-nav__link">
+    Disable Visual Effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-the-start-menu-with-open-shell" class="md-nav__link">
+    Replace the Start Menu with Open-Shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-hibernation" class="md-nav__link">
+    Disable Hibernation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shrink-the-windows-system-partition" class="md-nav__link">
+    Shrink the Windows System partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-background-apps" class="md-nav__link">
+    Disable background apps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-folder-missing-after-vm-is-restarted" class="md-nav__link">
+    Shared folder missing after VM is restarted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipboard-not-working-between-vm-and-host-machine" class="md-nav__link">
+    Clipboard not working between VM and Host machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipboard-randomly-stops-working" class="md-nav__link">
+    Clipboard randomly stops working
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my-vm-has-no-internet-access" class="md-nav__link">
+    My VM has no internet access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2023-11-13-virtualbox.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>2023 11 13 virtualbox</h1>
+
+<p>VPN software is often a major inconvenience, either blocking Internet access or
+severely limiting the speed at which you can connect.</p>
+<p>This makes attending meetings and troubleshooting problems with limited Internet
+access a challenge. Installing and using VPN software on Linux is also generally
+quite complicated, as I've outlined in my guide
+<a href="https://medium.com/@mikes-tech-tips/pop-os-vs-vpns-6917b7ff425">The Battle Between Pop!_OS &amp; VPN Software</a>.</p>
+<p>A simple solution to these challenges is to run the VPN software inside a
+virtual machine. This approach ensures that your primary machine remains
+unaffected by the VPN's limitations. Given the user-friendly nature of most VPN
+software on Windows, I've chosen to use Windows 10 as my guest Virtual Machine.</p>
+<p>Another benefit of using a Windows Virtual Machine is the ease with which you
+can install and run Windows exclusive software, such as Visual Studio, SQL
+Server Management Studio and Adobe PDF Viewer to name a few. Secondly, if your
+Windows-only application works perfectly in a VM, you don't have to dual-boot
+every time you want to use it.</p>
+<p>For this guide, we are going to be using VirtualBox, which is free for private
+and commercial use.</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Skill level required: Intermediate</p>
+<p>Before we can start using VirtualBox, we need to install it. As with most
+installations on Linux, we will open the Terminal and run the following to
+install VirtualBox.</p>
+<h2 id="installing-virtualbox">Installing VirtualBox<a class="headerlink" href="#installing-virtualbox" title="Permanent link">&para;</a></h2>
+<pre class="highlight"><code class="language-bash">sudo apt update
+sudo apt install virtualbox virtualbox-guest-additions-iso</code></pre>
+<h2 id="installing-windows-10-in-virtualbox">Installing Windows 10 in VirtualBox<a class="headerlink" href="#installing-windows-10-in-virtualbox" title="Permanent link">&para;</a></h2>
+<p>Download the official Windows 10 ISO from Microsoft
+<a href="https://www.microsoft.com/en-gb/software-download/windows10ISO">https://www.microsoft.com/en-gb/software-download/windows10ISO</a></p>
+<p>Add a new virtual machine to VirtualBox. <strong>Machine &gt;&gt; New</strong></p>
+<p><img alt="" src="../../img/2023-11-13/virtual-box-add-new.png" /></p>
+<p>Name your virtual machine, choose where you want to store its files, select the
+ISO you downloaded and tick <strong>Skip Unattended Installation</strong>.</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-name-vm.png" /></p>
+<p>Depending on the use case for the virtual machine, I choose the memory and
+processors accordingly. For the VPN virtual machine, 4GB RAM and 2 processors
+are sufficient. If I'm creating a development machine, I'll go for 8-16GB RAM
+and 4 processors.</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-memory-processor.png" /></p>
+<p>I usually go with about 80–100GB for Disk Size</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-disk-space.png" /></p>
+<p>Now the machine is created, but before booting I go to <strong>Settings &gt;&gt; Network</strong>.
+I change the <strong>Attached to</strong> drop down to a <strong>Bridged Adapter,</strong> and then I
+select the correct name. If you are connecting the VM to your Wi-Fi network, it
+will have something starting with <strong>wl</strong> (wireless lan) and if you are
+connecting the VM to ethernet, it will start with <strong>en</strong>.</p>
+<p>I then uncheck <strong>Enable network adapter</strong> during installation. This allows me to
+install Windows 10 using a local user account, rather than linking it to my
+online Microsoft account. If Microsoft cannot detect that you are connected to a
+network during installation, it will allow this option.</p>
+<p>The reason I switch to a bridged adapter is that you generally cannot use VPN
+software in a VM over NAT.</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-disable-network.png" /></p>
+<p>Now install Windows as usual</p>
+<p>Once the Windows 10 installation is complete, and you've booted to the desktop.
+Enable the network again.</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-enable-network.png" /></p>
+<h2 id="installing-virtualbox-guest-additions">Installing VirtualBox Guest Additions<a class="headerlink" href="#installing-virtualbox-guest-additions" title="Permanent link">&para;</a></h2>
+<p>The <strong>VirtualBox Guest Additions</strong> give us a number of useful features:</p>
+<ul>
+<li>Screen resizing (via a virtual display driver)</li>
+<li>Shared clipboard between host and guest machine</li>
+<li>Shared Folders (file sharing between host and guest)</li>
+<li>
+<p>Seamless mode (allows application windows from the guest OS to run directly
+    on the host desktop)</p>
+</li>
+<li>
+<p>To install <strong>Virtualbox Guest Additions</strong>, select <strong>Devices &gt;&gt; Insert Guest
+    Additions CD Image...</strong></p>
+</li>
+</ul>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-install-guest-additions.png" /></p>
+<p>Next, navigate to the connected DVD drive and run the VBoxWindowsAdditions.exe
+application.</p>
+<p><img alt="" src="../../img/2023-11-13/virtualbox-install-guest-additions2.png" /></p>
+<p>After the Guest Additions are installed, you'll be prompted to restart the
+virtual machine.</p>
+<p>After the restart is complete, you will know that the Guest Additions have been
+installed correctly if your virtual machine resizes correctly.</p>
+<h2 id="optional-steps">Optional Steps<a class="headerlink" href="#optional-steps" title="Permanent link">&para;</a></h2>
+<p>These are the typical tweaks I make on every new Windows 10 installation.</p>
+<h3 id="debloat-windows">Debloat Windows<a class="headerlink" href="#debloat-windows" title="Permanent link">&para;</a></h3>
+<p>I like to use a 'Windows 10 Debloater', which removes all the stuff I don't use
+in the operating system, such as Candy Crush, Cortana and One-drive. Have a look
+at its README.md to see how to use it</p>
+<p><a href="https://github.com/Sycnex/Windows10Debloater/archive/refs/heads/master.zip">https://github.com/Sycnex/Windows10Debloater/archive/refs/heads/master.zip</a></p>
+<h3 id="disable-visual-effects">Disable Visual Effects<a class="headerlink" href="#disable-visual-effects" title="Permanent link">&para;</a></h3>
+<p>I usually turn off all visual effects as they just slow the machine down.</p>
+<p><img alt="" src="../../img/2023-11-13/disable-effects.png" /></p>
+<p>I usually leave <strong>Smooth edges of screen fonts</strong> alone, otherwise the text on
+the screen can be very difficult to read.</p>
+<p><img alt="" src="../../img/2023-11-13/disable-effects-2.png" /></p>
+<h3 id="replace-the-start-menu-with-open-shell">Replace the Start Menu with Open-Shell<a class="headerlink" href="#replace-the-start-menu-with-open-shell" title="Permanent link">&para;</a></h3>
+<p>I usually replace the <strong>Start Menu</strong> with Open-Shell as it loads much faster,
+and it's easy to configure
+<a href="https://github.com/Open-Shell/Open-Shell-Menu/releases">https://github.com/Open-Shell/Open-Shell-Menu/releases</a></p>
+<h3 id="disable-hibernation">Disable Hibernation<a class="headerlink" href="#disable-hibernation" title="Permanent link">&para;</a></h3>
+<p>Disable system hibernation as it takes up a lot of disk space. Go to the command
+prompt as an administrator and run the following:</p>
+<pre class="highlight"><code class="language-cmd">powercfg /hibernate off</code></pre>
+<h3 id="shrink-the-windows-system-partition">Shrink the Windows System partition<a class="headerlink" href="#shrink-the-windows-system-partition" title="Permanent link">&para;</a></h3>
+<p>I find that Windows keeps trying to use more and more disk space. Even if you
+free up space, the VirtualBox vdi files continue to use the maximum space the
+operating system has grown to. To prevent this, I aggressively limit the maximum
+space that Windows can use for the C drive. I then expand the drive when more
+space is needed, if I cannot free additional space.</p>
+<p><img alt="" src="../../img/2023-11-13/limit-windows-space.png" /></p>
+<h3 id="disable-background-apps">Disable background apps<a class="headerlink" href="#disable-background-apps" title="Permanent link">&para;</a></h3>
+<p>I'm not sure why Windows thinks it's necessary to have applications like the
+calculator, 3D viewer and camera running in the background all the time. This is
+a waste of CPU cycles. I disable all the ones I don't need.</p>
+<p><img alt="" src="../../img/2023-11-13/turn-off-background-apps.png" /></p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="shared-folder-missing-after-vm-is-restarted">Shared folder missing after VM is restarted<a class="headerlink" href="#shared-folder-missing-after-vm-is-restarted" title="Permanent link">&para;</a></h3>
+<p>Make sure that you select both <strong>Auto-mount</strong> and <strong>Make Permanent</strong> when adding
+a new <strong>Shared Folder</strong>.</p>
+<p><img alt="" src="../../img/2023-11-13/file-share-not-working.png" /></p>
+<h3 id="clipboard-not-working-between-vm-and-host-machine">Clipboard not working between VM and Host machine<a class="headerlink" href="#clipboard-not-working-between-vm-and-host-machine" title="Permanent link">&para;</a></h3>
+<p>Did you turn it on under <strong>Devices &gt;&gt; Shared Clipboard &gt;&gt; Bidirectional</strong>?</p>
+<p><img alt="" src="../../img/2023-11-13/is-shared-clipboard-on.png" /></p>
+<h3 id="clipboard-randomly-stops-working">Clipboard randomly stops working<a class="headerlink" href="#clipboard-randomly-stops-working" title="Permanent link">&para;</a></h3>
+<p>You can fix this by killing the c:\Windows\System32\VBoxTray.exe process and
+starting it again. I usually put a batch file on my Windows VM desktop as this
+happens alot for me. I call my batch file <strong>fix-clipboard.bat</strong> and I put it on
+my desktop with the content below.</p>
+<pre class="highlight"><code class="language-cmd">:: Terminate the VirtualBox tray application
+taskkill /F /IM VBoxTray.exe
+:: Restart the VirtualBox tray application
+START "VboxTray" "c:\Windows\System32\VBoxTray.exe"</code></pre>
+<h3 id="my-vm-has-no-internet-access">My VM has no internet access<a class="headerlink" href="#my-vm-has-no-internet-access" title="Permanent link">&para;</a></h3>
+<p>If you are using a <strong>Bridged Adapter</strong> make sure that the <strong>Name</strong> selected is
+the name of the network that you are actually using. I.e. <strong>wl</strong> (wireless lan)
+if you are connecting via Wi-Fi and if you are connecting the VM to ethernet, it
+will start with <strong>en</strong>. Also make sure that <strong>Enable Network Adapter</strong> is
+ticked.</p>
+<p><img alt="" src="../../img/2023-11-13/vm-no-internet.png" /></p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>After successfully configuring your Virtual Machine (VM), you can proceed to
+install your preferred VPN software within the VM environment as well as any
+other tools that are exclusive to Windows.</p>
+<p>In my personal experience, this approach works with the following VPN software:</p>
+<ul>
+<li>FortiClient VPN</li>
+<li>Cisco AnyConnect</li>
+<li>Secure Mobility Client</li>
+<li>Global Protect</li>
+<li>Azure VPN Client</li>
+<li>Citrix Workspace App</li>
+</ul>
+<p>An additional advantage of adopting this method is that dual-booting your
+machine is not required.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Michael van Antwerpen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>

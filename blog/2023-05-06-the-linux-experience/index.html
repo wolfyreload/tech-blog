@@ -12,14 +12,14 @@
         <meta name="author" content="Michael van Antwerpen">
       
       
-        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2022-12-03-gaming-steam/">
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2023-05-06-the-linux-experience/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Gaming on Pop_OS! with Steam - Mike's Tech Tips</title>
+        <title>2023 05 06 the linux experience - Mike's Tech Tips</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gaming on Pop_OS! with Steam
+              2023 05 06 the linux experience
             
           </span>
         </div>
@@ -301,36 +301,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-steam" class="md-nav__link">
-    Installing Steam
+  <a href="#updates" class="md-nav__link">
+    Updates
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-steam-play" class="md-nav__link">
-    Enabling Steam Play
+  <a href="#file-locking" class="md-nav__link">
+    File Locking
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-proton-glorious-eggroll" class="md-nav__link">
-    Installing Proton Glorious Eggroll
+  <a href="#writing-software" class="md-nav__link">
+    Writing Software
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
-    Tips
+  <a href="#gaming" class="md-nav__link">
+    Gaming
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#qa" class="md-nav__link">
-    Q/A
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -349,117 +349,133 @@
                 
                   
 
-  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2022-12-03-gaming-steam.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2023-05-06-the-linux-experience.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Gaming on Pop_OS! with Steam</h1>
+  <h1>2023 05 06 the linux experience</h1>
 
-<p>If you love PC gaming, I'm going to guess that you game using Steam for your
-gaming fix. Fortunately, Steam runs really well on Linux. With a few tricks you
-should be able to play almost all your games in your Steam library.</p>
+<p><img alt="" src="../../img/2023-05-06/cover-image.jpeg" /></p>
+<p>Having used Microsoft products throughout my entire life, beginning from MS-DOS
+6.1 and progressing all the way to Windows 11, I have occasionally dabbled with
+Linux. However, in the past, I have consistently returned to Windows.</p>
+<p>Recently, I came across a challenge on Linus Tech Tips, where they pushed
+themselves to utilize Linux exclusively for an entire month to gain a deeper
+understanding of the system with its pros and cons. Inspired by their
+experiment, I decided to go on a similar journey. Unexpectedly, my Linux
+exploration lasted well beyond a year, and I am presently using Pop!_OS as my
+primary operating system.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Skill level required: Intermediate</p>
-<p>Here I'm going to assume that you've installed <strong>POP!_OS</strong>. If you haven't
-followed the guide for installing POP!_OS on their website
-<a href="https://support.system76.com/articles/install-pop">https://support.system76.com/articles/install-pop</a>.</p>
-<p>The only things I would change in the guide is:</p>
+<p>For the past six months, I have been using Pop!_OS as my primary operating
+system for work purposes. As a senior full stack developer, my work primarily
+revolves around creating software using the Microsoft stack, including SQL
+Server, C#, and Angular. Beyond my professional responsibilities, I am an avid
+PC gamer and was curious to explore the gaming potential of Linux. I spent
+slightly over a year exclusively gaming on Pop!_OS without any dual boot setup.</p>
+<p>I believe that I have used the OS for a sufficient length of time to give a run
+down of my overall experience for this operating system. Having used Windows for
+such a long time prior to using Linux, I'll be comparing each Linux experience
+with the corresponding Windows experience.</p>
+<h2 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link">&para;</a></h2>
+<p>In the world of Windows, every piece of software you install seems to have some
+sort of automatic update service running in the background. So when you boot up,
+all your browsers are updating, Adobe is updating, Steam is updating, Epic is
+updating, and in the background Windows itself is installing updates.</p>
+<p>In this day and age with easily accessible broadband internet, this is much less
+of an issue. However, when you go on holiday and there isn't Wi-Fi available,
+and you are using your limited mobile data plan this is an issue. You can of
+cause tell your system that you are on a "metered connection" but not all the
+software that you have installed seems to obey this rule.</p>
+<p>Finally, after updates have completed downloading then you have a few minutes to
+wait until the Windows takes its time installing these updates.</p>
+<p>On the other hand on Linux, typically all your software is installed via package
+managers. For Pop!_OS there are two package managers: "APT" and "Flatpak". No
+updates happen unless you kick them off yourself. You can of cause opt in for
+automatic updates if you wish.</p>
+<p>I like being more in control of when updates occur. Typically, Microsoft seems
+to know when I have a work presentation planned or stand-up meeting and is sure
+to interfere with an update at the same time.</p>
+<h2 id="file-locking">File Locking<a class="headerlink" href="#file-locking" title="Permanent link">&para;</a></h2>
+<p>This "feature" in Windows really drives me up the wall. If you've been using
+Windows for any length of time, when you try to delete or move a file, you'll
+get that annoying "the action cannot be completed because the folder or a file
+in it is open in another program" dialogue. Then you go looking for the random
+application that's locking up a file in the folder you're trying to delete, only
+to find that it's Windows Defender that's scanning the files you're trying to
+delete.</p>
+<p>Fortunately, Linux does not have this "feature". You can delete the files of an
+application while it's running, and it will continue to run in memory. If you're
+downloading a video file, you can watch the downloaded part of the video while
+it's still downloading without risking breaking the download.</p>
+<p>Going back to the topic of updates, if you update Firefox on Linux while the
+Firefox browser is open, if you want the updated version, it's just a matter of
+closing and reopening Firefox, and you'll have the updated version.</p>
+<h2 id="writing-software">Writing Software<a class="headerlink" href="#writing-software" title="Permanent link">&para;</a></h2>
+<p>Since, I'm a software developer, writing software features in my experience of
+Pop!_OS. I have written a number of .Net Core and .Net 6 and 7 applications. If
+you're writing a new application in the latest version of .Net, you'll have no
+problem writing the application on Linux.</p>
+<p>Since I mostly write web applications, they usually run in a Docker container or
+a Linux VM. Writing the software in Linux ensures that it will run on it's
+intended target machine.</p>
+<p>However, there are a few pitfalls to be aware of when writing code that needs to
+run on Linux, particularly when working with files:</p>
 <ul>
-<li>Using <a href="https://ventoy.net/en/doc_start.html">Ventoy</a> for the boot media
-    rather than Etcher. Mostly, because I use Ventoy for trying out multiple
-    distros from a single flash drive, so it's already available as an
-    installation media.</li>
-<li>If you're creating a gaming pc/laptop you might not want your hard drive
-    encrypted as this will slow down your game loading times a little. So when
-    you get to the <strong>Drive Encryption</strong> section in the installer select the
-    <strong>Don't Encrypt</strong> option.</li>
+<li>When referring to external files, most Linux file systems are
+    case-sensitive, meaning that my-file.txt and My-File.txt refer to two
+    separate files. On Windows, these two files are the same file. The solution
+    is to always use case-sensitive filenames and paths in your code when
+    reading external folders or files.</li>
+<li>Always use slashes (/) as path separators. Windows favours backslashes (),
+    but it works fine with both.</li>
 </ul>
-<p>Once you have <strong>POP!_OS</strong> installed, we'll have a look at installing Steam and
-getting your game library running.</p>
-<h2 id="installing-steam">Installing Steam<a class="headerlink" href="#installing-steam" title="Permanent link">&para;</a></h2>
-<p>Now that you have a freshly installed machine, don't install Steam using the
-<strong>Pop!_Shop</strong> as this will install the Steam flatpak which didn't let me easily
-store my games on another disk. Visit Steam's website
-<a href="https://store.steampowered.com">https://store.steampowered.com</a> and click on the <strong>Install Steam</strong> button. You
-should get a <strong>steam_latest.deb</strong> file in your Downloads folder. You can think
-of a <strong>.deb</strong> file as a <strong>.exe</strong> or <strong>.msi</strong> installer file for Pop!_OS (any
-distro derived from Debian actually). Double-click on the <strong>steam_latest.deb</strong>
-file, and it will open in <strong>Eddy</strong> (the Pop!_OS .deb installer tool). Simply
-click on the <strong>Install</strong> button, and it will start the installation for
-<strong>Steam</strong>.</p>
-<p><img alt="" src="../../img/2022-12-03/install-steam-eddy.png" /></p>
-<h2 id="enabling-steam-play">Enabling Steam Play<a class="headerlink" href="#enabling-steam-play" title="Permanent link">&para;</a></h2>
-<p>Now that I had Steam installed, you can just launch Steam using the application
-launcher (by pressing the <strong>Windows Key</strong>).</p>
-<p><img alt="" src="../../img/2022-12-03/steam-launcher-menu.png" /></p>
-<p>On my first launch of Steam, I was disappointed to see that my game library had
-shrunk down to around &frac14; of titles that were available on Windows. After some
-googling I discovered that you need to enable something called "Steam Play" for
-your games to run on Linux. Fortunately, this was a simple thing to fix.</p>
-<p>Open <strong>Steam &gt;&gt; Settings &gt;&gt; Steam Play</strong></p>
-<p>Now, you want to tick two options <strong>Enable Steam Play for supported titles</strong> and
-<strong>Enable Steam Play for all other titles</strong></p>
-<p><img alt="" src="../../img/2022-12-03/enable-steam-play.png" /></p>
-<p>Once you click on <strong>OK</strong>, you'll be prompted to restart Steam.</p>
-<h2 id="installing-proton-glorious-eggroll">Installing Proton Glorious Eggroll<a class="headerlink" href="#installing-proton-glorious-eggroll" title="Permanent link">&para;</a></h2>
-<p>Now, I could see my entire game library in Steam on Linux. Like, many other
-people, the first thing I did was launch Skyrim and I soon discovered that I had
-no sound in the game and had some other weird glitches.</p>
-<p>There is one more piece of the puzzle that you need to be able to play 99% of
-your library and that is <strong>Proton Glorious Eggroll</strong> (Proton GE for short). This
-tool is a heavily tweaked version of Proton which Steam uses for Steam Play. To
-download it, navigate to <a href="https://github.com/GloriousEggroll/proton-ge-custom">https://github.com/GloriousEggroll/proton-ge-custom</a></p>
-<p>Grab the latest release of Proton GE</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download1.png" /></p>
-<p>Download the latest binaries (not the source code)</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download2.png" /></p>
-<p>Double-click on the <strong>GE-Proton7-41.tar.gz</strong> file in your Downloads folder.
-Click on the <strong>Extract</strong> button in the top left.</p>
-<p>Select your <strong>Home</strong> folder</p>
-<p><img alt="" src="../../img/2022-12-03/home-folder.png" /></p>
-<p>Now what no one tells you is that you need to press <strong>Ctrl+H</strong> to show hidden
-folders (any folder or file with a dot in-front of the name is a hidden folder).
-Then select <strong>.steam &gt;&gt; steam</strong>. Now create a new folder called
-<strong>compatibilitytools.d</strong>. You can add additional folders by "Create Folder" icon
-just below the <strong>Extract</strong> button.</p>
-<p>Your screen should look as follows when you are ready to extract Proton GE by
-clicking on the <strong>Extract</strong> button.</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract1.png" /></p>
-<p>If you open your file manager and navigate to your new <strong>GE-Proton7-41</strong> folder
-and your screen looks as follows, you are on the right track</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract2.png" /></p>
-<p>Next, restart Steam and open the properties of any game. Select the
-<strong>Compatibility</strong> tab. Tick the <strong>Force the use of a specific Steam Play
-compatibility tool</strong>. Then select <strong>GE-Proton7-41</strong>. Launch your game and if you
-are lucky, 99% of the time the game will launch and play without issues.</p>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
-<ul>
-<li>If you are using a gaming laptop, most gaming laptops have hybrid graphics.
-    For the best gaming experience you going to want to select the dedicated
-    graphics card option in your power settings.
-    <img alt="" src="../../img/2022-12-03/battery-dedicated-graphics.png" /></li>
-<li>If you are struggling to get a game to work, have a look at ProtonDB
-    <a href="https://www.protondb.com">https://www.protondb.com</a> and see if other's have managed to play the game
-    on Linux and what tweaks were needed to play the game.</li>
-</ul>
-<h2 id="qa">Q/A<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Why didn't you just use the flatpak for Steam in the Pop!_Shop? Working
-    with Steam games that you want to have installed on another drive is much
-    harder and requires creating linked folders etc.</li>
-<li>Why are my games not working when I'm sharing a common game library with
-    Windows on another drive? Steam Play does not work correctly with ntfs
-    formatted drives.</li>
-<li>My game is immediately crashing on launch? Same as above, have a look at
-    ProtonDB and see what others needed to do to get the game working.</li>
-<li>Do you know that you could have completed your whole guide by using 4 lines
-    of bash script? Yes, I am aware of this but this post is intended to teach
-    rather than just get to the end goal.</li>
-<li>Why are you calling the OS Linux don't you know that Linux is just a kernel,
-    and it's actually GNU/Linux? I am aware of that.</li>
-</ul>
+<p>Something that has really helped me to be a more productive developer on
+Pop!_OS is the JetBrains IDE tool suite. Since I already had experience with
+JetBrains Rider on Windows, the switch to Linux was virtually seamless.</p>
+<p>However, there's one tool that I need for my day-to-day work, and the Linux
+alternatives are pretty lacking. I'm running a Windows 10 virtual machine in
+VirtualBox primarily to run this tool. That tool is SQL Server Management
+Studio. There are alternatives such as Azure Data Studio and the SQL Server
+extension for VS Code, but I have found that SQL Server Management Studio is
+usually more stable and has more scripting capabilities and has better UI
+capabilities.</p>
+<p>If your application depends on either: Winforms, WPF, or you are using an old
+version of the .Net Framework. Then it would be safer to keep your development
+work on Windows.</p>
+<h2 id="gaming">Gaming<a class="headerlink" href="#gaming" title="Permanent link">&para;</a></h2>
+<p>These days, Linux is surprisingly good at running computer games, even those not
+originally designed for Linux. However, Windows is still the king of PC gaming.</p>
+<p>I have played a number of indie and AAA games on Pop!_OS including Skyrim,
+Stardew Valley, Borderlands 3, Mortal Kombat 11, Terraria, Two Point Hospital,
+The Sims 4, Devil May Cry 1-4, Slim Rancher, Fallout 3 and 4. Just to name a
+few. Sometimes the framerates were slightly worse than on Windows, but for other
+games the performance was slightly better. I haven't come across a single Steam
+game I wanted to play that wouldn't launch at all.</p>
+<p>Unfortunately, many competitive online games do not play well on Linux due to
+their anti-cheat software. For example, you probably won't be able to play Rust,
+PUBG or Dead by Daylight any time soon. Also, if you want to use VR, Linux is
+still a bit behind.</p>
+<p>So honestly, if you have a gaming rig and only play PC games. Just use Windows
+10 (avoid Windows 11 until they stop breaking gaming performance with their
+updates). Personally, I switched back to Windows 10 a few weeks ago because I
+wanted to play Dauntless (doesn't work on Linux due to Easy Anti-Cheat).</p>
+<p>If you are more of an emulation gamer and like to play your old Playstation 1, 2
+and 3 games or the old Nintendo games on the PC, then Linux might be better for
+you. This is because Linux seems to have more emulator software available than
+Windows.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Both Windows and Pop!_OS are excellent operating systems for getting work done
+and for gaming. Pop!_OS seems to be much more stable, has a better update
+strategy and works well as a software development machine. Windows has some
+tools that are very useful that have no cross-platform alternatives and is still
+the king of pc gaming.</p>
+<p>So which one should you choose? If you want a dedicated machine where all your
+PC games work, you play competitive online games, or you have a VR headset, then
+go for Windows. If you are a casual gamer, or enjoy a lot of emulation then
+Pop!_OS should work well for you. If you want a development machine with more
+configuration options, then Pop!_OS might be an option.</p>
 
 
 

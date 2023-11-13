@@ -12,14 +12,14 @@
         <meta name="author" content="Michael van Antwerpen">
       
       
-        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2022-12-03-gaming-steam/">
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2023-02-17-docker/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Gaming on Pop_OS! with Steam - Mike's Tech Tips</title>
+        <title>2023 02 17 docker - Mike's Tech Tips</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gaming on Pop_OS! with Steam
+              2023 02 17 docker
             
           </span>
         </div>
@@ -301,36 +301,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-steam" class="md-nav__link">
-    Installing Steam
+  <a href="#installing-docker" class="md-nav__link">
+    Installing Docker
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-steam-play" class="md-nav__link">
-    Enabling Steam Play
+  <a href="#using-docker-to-install-relational-databases" class="md-nav__link">
+    Using Docker to install relational databases
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-proton-glorious-eggroll" class="md-nav__link">
-    Installing Proton Glorious Eggroll
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
-    Tips
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#qa" class="md-nav__link">
-    Q/A
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -349,117 +335,159 @@
                 
                   
 
-  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2022-12-03-gaming-steam.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2023-02-17-docker.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Gaming on Pop_OS! with Steam</h1>
+  <h1>2023 02 17 docker</h1>
 
-<p>If you love PC gaming, I'm going to guess that you game using Steam for your
-gaming fix. Fortunately, Steam runs really well on Linux. With a few tricks you
-should be able to play almost all your games in your Steam library.</p>
+<p>I've been using Docker for about 4+ years now, and it really simplifies software
+development and deployment. Docker works well on Windows 10 under WSL 2.0.
+However, once you've run Docker natively on a Linux machine, you'll notice a
+huge difference in performance, memory and space usage, and there's really no
+comparison between running Docker natively and 'emulating' Docker in a WSL Linux
+kernel via Hyper V.</p>
+<p>As with all my guides, I'll be using Pop!_OS as my Linux distro of choice.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Skill level required: Intermediate</p>
-<p>Here I'm going to assume that you've installed <strong>POP!_OS</strong>. If you haven't
-followed the guide for installing POP!_OS on their website
-<a href="https://support.system76.com/articles/install-pop">https://support.system76.com/articles/install-pop</a>.</p>
-<p>The only things I would change in the guide is:</p>
+<p>Required skill level: Intermediate</p>
+<p>I use Docker every day, and these are the things I use Docker for:</p>
 <ul>
-<li>Using <a href="https://ventoy.net/en/doc_start.html">Ventoy</a> for the boot media
-    rather than Etcher. Mostly, because I use Ventoy for trying out multiple
-    distros from a single flash drive, so it's already available as an
-    installation media.</li>
-<li>If you're creating a gaming pc/laptop you might not want your hard drive
-    encrypted as this will slow down your game loading times a little. So when
-    you get to the <strong>Drive Encryption</strong> section in the installer select the
-    <strong>Don't Encrypt</strong> option.</li>
+<li>Create Docker images to deploy software that runs on virtual machines</li>
+<li>Running relational databases in containers</li>
+<li>Building .Net and Angular software applications using Docker BuildKit</li>
+<li>Running VPN software in Docker to simplify the installation and use of VPN
+    software</li>
 </ul>
-<p>Once you have <strong>POP!_OS</strong> installed, we'll have a look at installing Steam and
-getting your game library running.</p>
-<h2 id="installing-steam">Installing Steam<a class="headerlink" href="#installing-steam" title="Permanent link">&para;</a></h2>
-<p>Now that you have a freshly installed machine, don't install Steam using the
-<strong>Pop!_Shop</strong> as this will install the Steam flatpak which didn't let me easily
-store my games on another disk. Visit Steam's website
-<a href="https://store.steampowered.com">https://store.steampowered.com</a> and click on the <strong>Install Steam</strong> button. You
-should get a <strong>steam_latest.deb</strong> file in your Downloads folder. You can think
-of a <strong>.deb</strong> file as a <strong>.exe</strong> or <strong>.msi</strong> installer file for Pop!_OS (any
-distro derived from Debian actually). Double-click on the <strong>steam_latest.deb</strong>
-file, and it will open in <strong>Eddy</strong> (the Pop!_OS .deb installer tool). Simply
-click on the <strong>Install</strong> button, and it will start the installation for
-<strong>Steam</strong>.</p>
-<p><img alt="" src="../../img/2022-12-03/install-steam-eddy.png" /></p>
-<h2 id="enabling-steam-play">Enabling Steam Play<a class="headerlink" href="#enabling-steam-play" title="Permanent link">&para;</a></h2>
-<p>Now that I had Steam installed, you can just launch Steam using the application
-launcher (by pressing the <strong>Windows Key</strong>).</p>
-<p><img alt="" src="../../img/2022-12-03/steam-launcher-menu.png" /></p>
-<p>On my first launch of Steam, I was disappointed to see that my game library had
-shrunk down to around &frac14; of titles that were available on Windows. After some
-googling I discovered that you need to enable something called "Steam Play" for
-your games to run on Linux. Fortunately, this was a simple thing to fix.</p>
-<p>Open <strong>Steam &gt;&gt; Settings &gt;&gt; Steam Play</strong></p>
-<p>Now, you want to tick two options <strong>Enable Steam Play for supported titles</strong> and
-<strong>Enable Steam Play for all other titles</strong></p>
-<p><img alt="" src="../../img/2022-12-03/enable-steam-play.png" /></p>
-<p>Once you click on <strong>OK</strong>, you'll be prompted to restart Steam.</p>
-<h2 id="installing-proton-glorious-eggroll">Installing Proton Glorious Eggroll<a class="headerlink" href="#installing-proton-glorious-eggroll" title="Permanent link">&para;</a></h2>
-<p>Now, I could see my entire game library in Steam on Linux. Like, many other
-people, the first thing I did was launch Skyrim and I soon discovered that I had
-no sound in the game and had some other weird glitches.</p>
-<p>There is one more piece of the puzzle that you need to be able to play 99% of
-your library and that is <strong>Proton Glorious Eggroll</strong> (Proton GE for short). This
-tool is a heavily tweaked version of Proton which Steam uses for Steam Play. To
-download it, navigate to <a href="https://github.com/GloriousEggroll/proton-ge-custom">https://github.com/GloriousEggroll/proton-ge-custom</a></p>
-<p>Grab the latest release of Proton GE</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download1.png" /></p>
-<p>Download the latest binaries (not the source code)</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download2.png" /></p>
-<p>Double-click on the <strong>GE-Proton7-41.tar.gz</strong> file in your Downloads folder.
-Click on the <strong>Extract</strong> button in the top left.</p>
-<p>Select your <strong>Home</strong> folder</p>
-<p><img alt="" src="../../img/2022-12-03/home-folder.png" /></p>
-<p>Now what no one tells you is that you need to press <strong>Ctrl+H</strong> to show hidden
-folders (any folder or file with a dot in-front of the name is a hidden folder).
-Then select <strong>.steam &gt;&gt; steam</strong>. Now create a new folder called
-<strong>compatibilitytools.d</strong>. You can add additional folders by "Create Folder" icon
-just below the <strong>Extract</strong> button.</p>
-<p>Your screen should look as follows when you are ready to extract Proton GE by
-clicking on the <strong>Extract</strong> button.</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract1.png" /></p>
-<p>If you open your file manager and navigate to your new <strong>GE-Proton7-41</strong> folder
-and your screen looks as follows, you are on the right track</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract2.png" /></p>
-<p>Next, restart Steam and open the properties of any game. Select the
-<strong>Compatibility</strong> tab. Tick the <strong>Force the use of a specific Steam Play
-compatibility tool</strong>. Then select <strong>GE-Proton7-41</strong>. Launch your game and if you
-are lucky, 99% of the time the game will launch and play without issues.</p>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<p>In this guide we'll be learning about how to install Docker on Pop!_OS and how
+to run multiple relational database containers using Docker.</p>
+<h2 id="installing-docker">Installing Docker<a class="headerlink" href="#installing-docker" title="Permanent link">&para;</a></h2>
+<p>Here I'll give you the scripts I use to install Docker, but I'll also go through
+what the scripts actually install. It can be dangerous to just copy and paste
+scripts, so I'll try to explain what the scripts actually do as we go along.</p>
+<p>There are a number of dependencies for adding the Docker apt sources:</p>
 <ul>
-<li>If you are using a gaming laptop, most gaming laptops have hybrid graphics.
-    For the best gaming experience you going to want to select the dedicated
-    graphics card option in your power settings.
-    <img alt="" src="../../img/2022-12-03/battery-dedicated-graphics.png" /></li>
-<li>If you are struggling to get a game to work, have a look at ProtonDB
-    <a href="https://www.protondb.com">https://www.protondb.com</a> and see if other's have managed to play the game
-    on Linux and what tweaks were needed to play the game.</li>
+<li><strong>ca-certificates</strong> - contains a number of common certificates used for
+    SSL/TLS encryption.</li>
+<li><strong>curl</strong> - a command line tool for interacting with web servers, often used
+    to download files.</li>
+<li><strong>gnupg</strong> - GNU Privacy Guard is a tool for secure communication and
+    storage. It's used to encrypt and sign messages.</li>
+<li><strong>lsb-release</strong> - Provides information about the version and distribution of
+    the Linux distribution you are currently using.</li>
 </ul>
-<h2 id="qa">Q/A<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h2>
+<pre class="highlight"><code class="language-bash"># Get dependencies to install docker
+sudo apt-get update
+sudo apt-get -y install ca-certificates curl gnupg lsb-release</code></pre>
+<p>Now we should have all the dependencies that we need to add the Docker apt
+sources to our apt sources, which allows us to get the latest Docker packages
+from Docker itself, rather than getting the images from the Pop!_OS or Ubuntu
+maintainers.</p>
+<pre class="highlight"><code class="language-bash"># Add docker ppa reference
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+    | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</code></pre>
+<p>Next, we'll actually install Docker and its associated packages:</p>
 <ul>
-<li>Why didn't you just use the flatpak for Steam in the Pop!_Shop? Working
-    with Steam games that you want to have installed on another drive is much
-    harder and requires creating linked folders etc.</li>
-<li>Why are my games not working when I'm sharing a common game library with
-    Windows on another drive? Steam Play does not work correctly with ntfs
-    formatted drives.</li>
-<li>My game is immediately crashing on launch? Same as above, have a look at
-    ProtonDB and see what others needed to do to get the game working.</li>
-<li>Do you know that you could have completed your whole guide by using 4 lines
-    of bash script? Yes, I am aware of this but this post is intended to teach
-    rather than just get to the end goal.</li>
-<li>Why are you calling the OS Linux don't you know that Linux is just a kernel,
-    and it's actually GNU/Linux? I am aware of that.</li>
+<li><strong>docker-ce</strong> - Package for the Docker Community Edition.</li>
+<li><strong>docker-ce-cli</strong> - Package for the Docker Command Line Interface, a tool
+    for managing Docker containers and images from the command line.</li>
+<li><strong>docker-compose</strong> - A tool for defining and running multi-container Docker
+    applications.</li>
 </ul>
+<pre class="highlight"><code class="language-bash"># Install docker
+sudo apt-get update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose</code></pre>
+<p>Once Docker is installed, I don't like using sudo for every Docker command on my
+local machine. If I add my current user to the docker group, I won't need to use
+sudo when using Docker.</p>
+<p>This step is optional. If you don't perform this step, you will need to add the
+sudo command before each Docker command in the future. Note that you will need
+to reboot your machine after running the script below for the change to take
+effect.</p>
+<pre class="highlight"><code class="language-bash"># Make a docker group and add the current user to the group
+sudo groupadd docker
+sudo usermod -aG docker ${USER}</code></pre>
+<p>Now, to test that Docker is successfully installed, run the following, and you
+should get the expected output if Docker is installed correctly.</p>
+<pre class="highlight"><code class="language-bash">docker ps
+# Expected output
+# CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</code></pre>
+<h2 id="using-docker-to-install-relational-databases">Using Docker to install relational databases<a class="headerlink" href="#using-docker-to-install-relational-databases" title="Permanent link">&para;</a></h2>
+<p>I typically use Docker to run relational databases because I use multiple
+database software. By using Docker, I can have a different 'server' for each
+project I'm working on and only have that server available when and if I need
+it, rather than having it running in the background all the time.</p>
+<p>Here is the script I use to spin up a MS SQL Server, PostgreSQL and MySQL server
+databases. For each server we use its default port and password
+"SuperWeakPassword123!"</p>
+<pre class="highlight"><code class="language-bash"># Spin up MS SQL Server 2019 Developer edition
+docker run -d \
+  -e "ACCEPT_EULA=Y" \
+  -e "MSSQL_SA_PASSWORD=SuperWeakPassword123!" \
+  -p 1433:1433 \
+  --name sql-server-2019-playground \
+  mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04
+# Spin up MySQL Server 8
+docker run -d \
+  -e "MYSQL_ROOT_PASSWORD=SuperWeakPassword123!" \
+  -p3306:3306 \
+  --name mysql-8-playground \
+  mysql:8.0.27
+# Spin up PosgreSQL 14
+docker run -d \
+  --name posgresql-14-playground \
+  -e "POSTGRES_PASSWORD=SuperWeakPassword123!" \
+  -p 5432:5432 \
+  postgres:14.1-alpine</code></pre>
+<p>Starting and stopping these containers is as simple as the commands below.</p>
+<pre class="highlight"><code class="language-bash"># Remember to replace "container-name" with the actual container name
+docker stop container-name
+docker start container-name</code></pre>
+<p>Since these are just playground containers, after I've finished testing what I
+want to test in SQL, I can just nuke them with the following commands</p>
+<pre class="highlight"><code class="language-bash">docker rm sql-server-2019-playground --force
+docker rm posgresql-14-playground --force
+docker rm mysql-8-playground --force</code></pre>
+<p>But what if you actually want to store the database files outside the container?
+You can do this by attaching a volume to the folder where the database files
+inside the container. This makes it much easier to database from, say, a
+production server back to your local development container.</p>
+<p>Here we have the same script we used to spin up the SQL Server container, but
+note the extra part <strong>--volume sql-server-2019-project1:/var/opt/mssql</strong>. This
+will create a volume called <strong>sql-server-2019-project1</strong> in the
+<strong>/var/lib/docker/volumes/</strong> folder on your machine. You can easily dump a
+backup file or even drop a mdf and ldf file into the volume, and it will be
+picked up by SQL Server.</p>
+<pre class="highlight"><code class="language-bash"># Spin up MS SQL Server 2019 Developer edition
+docker run -d \
+  -e "ACCEPT_EULA=Y" \
+  -e "MSSQL_SA_PASSWORD=SuperWeakPassword123!" \
+  -p 1433:1433 \
+  --name sql-server-2019-project1 \
+  --volume sql-server-2019-project1:/var/opt/mssql \
+  mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04</code></pre>
+<p>If we navigate to this volume in the GUI, we can see that there are the
+following folders in the volume:</p>
+<ul>
+<li><strong>data</strong> - contains the mdf and ldf files for all databases</li>
+<li><strong>log</strong> - contains the error log and trace files for SQL Server</li>
+<li><strong>secrets</strong> - holds certificates and other secrets</li>
+</ul>
+<p><img alt="" src="../../img/2023-02-17/docker-volumes-folder.png" /></p>
+<p>Typically, I create a new folder called backups, put the .bak files in that
+folder and then restore the backups using Azure Data Studio. The allows the
+volume's files to be easily accessible between my local machine and from within
+the container.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Installing Docker is very useful for a local development environment. It is
+particularly useful when working with relational databases and makes it really
+easy to test software against different versions of the same database engine.
+With each project running in a different container, switching between projects
+becomes much easier as each container only has the databases associated with
+that project.</p>
 
 
 

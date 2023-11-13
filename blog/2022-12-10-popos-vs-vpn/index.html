@@ -12,14 +12,14 @@
         <meta name="author" content="Michael van Antwerpen">
       
       
-        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2022-12-03-gaming-steam/">
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2022-12-10-popos-vs-vpn/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Gaming on Pop_OS! with Steam - Mike's Tech Tips</title>
+        <title>2022 12 10 popos vs vpn - Mike's Tech Tips</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gaming on Pop_OS! with Steam
+              2022 12 10 popos vs vpn
             
           </span>
         </div>
@@ -301,36 +301,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-steam" class="md-nav__link">
-    Installing Steam
+  <a href="#installing-openconnect" class="md-nav__link">
+    Installing OpenConnect
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-steam-play" class="md-nav__link">
-    Enabling Steam Play
+  <a href="#using-openconnect" class="md-nav__link">
+    Using OpenConnect
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-proton-glorious-eggroll" class="md-nav__link">
-    Installing Proton Glorious Eggroll
+  <a href="#domain-name-resolution-not-working-for-vpn-connections" class="md-nav__link">
+    Domain Name Resolution not working for VPN connections
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain Name Resolution not working for VPN connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#culprit-systemd-resolved" class="md-nav__link">
+    Culprit systemd-resolved
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turning-off-systemd-resolved" class="md-nav__link">
+    Turning off systemd-resolved
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rdp-with-remmina" class="md-nav__link">
+    RDP with Remmina
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
-    Tips
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#qa" class="md-nav__link">
-    Q/A
+  <a href="#what-is-next" class="md-nav__link">
+    What is Next
   </a>
   
 </li>
@@ -349,117 +376,152 @@
                 
                   
 
-  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2022-12-03-gaming-steam.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/wolfyreload/tech-blog.git/edit/master/docs/blog/2022-12-10-popos-vs-vpn.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Gaming on Pop_OS! with Steam</h1>
+  <h1>2022 12 10 popos vs vpn</h1>
 
-<p>If you love PC gaming, I'm going to guess that you game using Steam for your
-gaming fix. Fortunately, Steam runs really well on Linux. With a few tricks you
-should be able to play almost all your games in your Steam library.</p>
+<p>Being able to securely connect to an office or client network is something a
+typical software developer or server administrator has to do daily. VPNs are
+usually rather complicated and seem to be more complicated on Linux than
+Windows. However, that might just be because I have used Windows for a longer
+time. In this guide, we'll be looking at working with VPNs and some annoying
+challenges along the way.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Skill level required: Intermediate</p>
-<p>Here I'm going to assume that you've installed <strong>POP!_OS</strong>. If you haven't
-followed the guide for installing POP!_OS on their website
-<a href="https://support.system76.com/articles/install-pop">https://support.system76.com/articles/install-pop</a>.</p>
-<p>The only things I would change in the guide is:</p>
+<p>Skill level required: Advanced</p>
+<p>Working with VPNs on Pop!_OS and Linux, in general, has been my greatest
+challenge so far for adopting the Operating System for daily use. Getting VPNs
+working took a lot of reading and tinkering. Hopefully, this guide will help you
+get your VPN needs set up and running much quicker.</p>
+<p>That being said, if you are not comfortable using the Terminal in Windows, I
+would recommend that you give this guide a skip.</p>
+<p>We'll start off by installing an open-source VPN software called
+<strong>OpenConnect</strong>.</p>
+<h2 id="installing-openconnect">Installing OpenConnect<a class="headerlink" href="#installing-openconnect" title="Permanent link">&para;</a></h2>
+<p>On Windows, you often need to install multiple VPN software. However, on Linux,
+there is one that works particularly well for several VPNs. Introducing
+<strong>OpenConnect</strong>.</p>
+<p><strong>OpenConnect</strong> understands the following VPN protocols and can connect to any
+of the below VPNs:</p>
 <ul>
-<li>Using <a href="https://ventoy.net/en/doc_start.html">Ventoy</a> for the boot media
-    rather than Etcher. Mostly, because I use Ventoy for trying out multiple
-    distros from a single flash drive, so it's already available as an
-    installation media.</li>
-<li>If you're creating a gaming pc/laptop you might not want your hard drive
-    encrypted as this will slow down your game loading times a little. So when
-    you get to the <strong>Drive Encryption</strong> section in the installer select the
-    <strong>Don't Encrypt</strong> option.</li>
+<li>Cisco AnyConnect SSL VPN</li>
+<li>Juniper Network Connect</li>
+<li>Palo Alto Networks (PAN) GlobalProtect SSL VPN</li>
+<li>Pulse Connect Secure SSL VPN</li>
+<li>F5 BIG-IP SSL VPN</li>
+<li>FortiGate SSL VPN</li>
+<li>Array Networks SSL VPN</li>
 </ul>
-<p>Once you have <strong>POP!_OS</strong> installed, we'll have a look at installing Steam and
-getting your game library running.</p>
-<h2 id="installing-steam">Installing Steam<a class="headerlink" href="#installing-steam" title="Permanent link">&para;</a></h2>
-<p>Now that you have a freshly installed machine, don't install Steam using the
-<strong>Pop!_Shop</strong> as this will install the Steam flatpak which didn't let me easily
-store my games on another disk. Visit Steam's website
-<a href="https://store.steampowered.com">https://store.steampowered.com</a> and click on the <strong>Install Steam</strong> button. You
-should get a <strong>steam_latest.deb</strong> file in your Downloads folder. You can think
-of a <strong>.deb</strong> file as a <strong>.exe</strong> or <strong>.msi</strong> installer file for Pop!_OS (any
-distro derived from Debian actually). Double-click on the <strong>steam_latest.deb</strong>
-file, and it will open in <strong>Eddy</strong> (the Pop!_OS .deb installer tool). Simply
-click on the <strong>Install</strong> button, and it will start the installation for
-<strong>Steam</strong>.</p>
-<p><img alt="" src="../../img/2022-12-03/install-steam-eddy.png" /></p>
-<h2 id="enabling-steam-play">Enabling Steam Play<a class="headerlink" href="#enabling-steam-play" title="Permanent link">&para;</a></h2>
-<p>Now that I had Steam installed, you can just launch Steam using the application
-launcher (by pressing the <strong>Windows Key</strong>).</p>
-<p><img alt="" src="../../img/2022-12-03/steam-launcher-menu.png" /></p>
-<p>On my first launch of Steam, I was disappointed to see that my game library had
-shrunk down to around &frac14; of titles that were available on Windows. After some
-googling I discovered that you need to enable something called "Steam Play" for
-your games to run on Linux. Fortunately, this was a simple thing to fix.</p>
-<p>Open <strong>Steam &gt;&gt; Settings &gt;&gt; Steam Play</strong></p>
-<p>Now, you want to tick two options <strong>Enable Steam Play for supported titles</strong> and
-<strong>Enable Steam Play for all other titles</strong></p>
-<p><img alt="" src="../../img/2022-12-03/enable-steam-play.png" /></p>
-<p>Once you click on <strong>OK</strong>, you'll be prompted to restart Steam.</p>
-<h2 id="installing-proton-glorious-eggroll">Installing Proton Glorious Eggroll<a class="headerlink" href="#installing-proton-glorious-eggroll" title="Permanent link">&para;</a></h2>
-<p>Now, I could see my entire game library in Steam on Linux. Like, many other
-people, the first thing I did was launch Skyrim and I soon discovered that I had
-no sound in the game and had some other weird glitches.</p>
-<p>There is one more piece of the puzzle that you need to be able to play 99% of
-your library and that is <strong>Proton Glorious Eggroll</strong> (Proton GE for short). This
-tool is a heavily tweaked version of Proton which Steam uses for Steam Play. To
-download it, navigate to <a href="https://github.com/GloriousEggroll/proton-ge-custom">https://github.com/GloriousEggroll/proton-ge-custom</a></p>
-<p>Grab the latest release of Proton GE</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download1.png" /></p>
-<p>Download the latest binaries (not the source code)</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-download2.png" /></p>
-<p>Double-click on the <strong>GE-Proton7-41.tar.gz</strong> file in your Downloads folder.
-Click on the <strong>Extract</strong> button in the top left.</p>
-<p>Select your <strong>Home</strong> folder</p>
-<p><img alt="" src="../../img/2022-12-03/home-folder.png" /></p>
-<p>Now what no one tells you is that you need to press <strong>Ctrl+H</strong> to show hidden
-folders (any folder or file with a dot in-front of the name is a hidden folder).
-Then select <strong>.steam &gt;&gt; steam</strong>. Now create a new folder called
-<strong>compatibilitytools.d</strong>. You can add additional folders by "Create Folder" icon
-just below the <strong>Extract</strong> button.</p>
-<p>Your screen should look as follows when you are ready to extract Proton GE by
-clicking on the <strong>Extract</strong> button.</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract1.png" /></p>
-<p>If you open your file manager and navigate to your new <strong>GE-Proton7-41</strong> folder
-and your screen looks as follows, you are on the right track</p>
-<p><img alt="" src="../../img/2022-12-03/proton-ge-extract2.png" /></p>
-<p>Next, restart Steam and open the properties of any game. Select the
-<strong>Compatibility</strong> tab. Tick the <strong>Force the use of a specific Steam Play
-compatibility tool</strong>. Then select <strong>GE-Proton7-41</strong>. Launch your game and if you
-are lucky, 99% of the time the game will launch and play without issues.</p>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
-<ul>
-<li>If you are using a gaming laptop, most gaming laptops have hybrid graphics.
-    For the best gaming experience you going to want to select the dedicated
-    graphics card option in your power settings.
-    <img alt="" src="../../img/2022-12-03/battery-dedicated-graphics.png" /></li>
-<li>If you are struggling to get a game to work, have a look at ProtonDB
-    <a href="https://www.protondb.com">https://www.protondb.com</a> and see if other's have managed to play the game
-    on Linux and what tweaks were needed to play the game.</li>
-</ul>
-<h2 id="qa">Q/A<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Why didn't you just use the flatpak for Steam in the Pop!_Shop? Working
-    with Steam games that you want to have installed on another drive is much
-    harder and requires creating linked folders etc.</li>
-<li>Why are my games not working when I'm sharing a common game library with
-    Windows on another drive? Steam Play does not work correctly with ntfs
-    formatted drives.</li>
-<li>My game is immediately crashing on launch? Same as above, have a look at
-    ProtonDB and see what others needed to do to get the game working.</li>
-<li>Do you know that you could have completed your whole guide by using 4 lines
-    of bash script? Yes, I am aware of this but this post is intended to teach
-    rather than just get to the end goal.</li>
-<li>Why are you calling the OS Linux don't you know that Linux is just a kernel,
-    and it's actually GNU/Linux? I am aware of that.</li>
-</ul>
+<p>This works perfectly for me as I typically use FortiGate and Cisco AnyConnect
+for 90% of the VPNs, I connect to.</p>
+<p>To install it, just open the <strong>Terminal</strong> using the launcher or by pressing
+<strong>WINDOWS_KEY+T</strong></p>
+<p><img alt="" src="../../img/2022-12-10/vpn-install/open-terminal.png" /></p>
+<pre class="highlight"><code class="language-bash">sudo apt update
+sudo apt install -y openconnect</code></pre>
+<p>The <strong>sudo</strong> command tells the terminal to run the rest of the command that
+follows as a full <strong>Administrator</strong>. <strong>APT</strong> stands for <strong>Advanced Package
+Tool</strong> and is often the simplest way of installing software on Debian-based
+distros like Pop!_OS.</p>
+<p>Note that when you are prompted to fill in your password for your user, there is
+no indication that you are typing anything (i.e. there are no *s shown as you
+type your password). Once you enter the right password just press the <strong>Enter</strong>
+as usual and <strong>APT</strong> will install the software for you.</p>
+<h2 id="using-openconnect">Using OpenConnect<a class="headerlink" href="#using-openconnect" title="Permanent link">&para;</a></h2>
+<p>If you wanted to connect to say a FortiGate vpn you will run a terminal command
+that looks something like this (remember to replace your-vpn-username and
+remote.officedomain.com with your information):</p>
+<pre class="highlight"><code class="language-bash">sudo openconnect \
+    --user=your-vpn-username \
+    --protocol=fortinet \
+    --server=remote.officedomain.com:10443</code></pre>
+<p>When you try and connect you'll typically get an error that looks as follows:
+"Certificate from VPN server "x" failed verification." This is because 99% of
+VPN solutions seem to use self-signed certificates.</p>
+<p><img alt="" src="../../img/2022-12-10/vpn-install/vpn-use-cert-fail.png" /></p>
+<p>Fortunately, you can just copy the line indicated below and add that to the
+terminal command that you are using. E.g. the command that you would use for
+connecting to the vpn would look something like this in the end.</p>
+<pre class="highlight"><code class="language-bash">sudo openconnect \
+    --user=your-vpn-username \
+    --protocol=fortinet \
+    --server=remote.officedomain.com:10443 \
+    --servercert pin-sha256:a+b/c+dg=</code></pre>
+<p>Next, you'll be prompted for your password and then potentially for your MFA
+token (if that is enabled).</p>
+<p>If all goes well, you are now connected to your work VPN. And you are done? Well
+not quite, you see VPN software does not seem to play nicely with
+<strong>systemd-resolved</strong>.</p>
+<h2 id="domain-name-resolution-not-working-for-vpn-connections">Domain Name Resolution not working for VPN connections<a class="headerlink" href="#domain-name-resolution-not-working-for-vpn-connections" title="Permanent link">&para;</a></h2>
+<p>Soon after connecting to the VPN, I discovered that I could not use the DNS name
+for any servers on my work network, however, the IP address would resolve. E.g.
+if I have a DNS name test.officedomain.local with IP address 192.168.3.200</p>
+<p>If I ping test.officedomain.local (while on the VPN) I get <strong>Temporary failure
+in name resolution</strong></p>
+<pre class="highlight"><code class="language-bash">ping test.officedomain.local
+# ping: test.officedomain.local: Temporary failure in name resolution</code></pre>
+<p>However, I can ping the IP address, I can connect just perfectly. e.g.</p>
+<pre class="highlight"><code class="language-bash">ping 192.168.3.200
+# 64 bytes from 192.168.3.200: icmp_seq=1 ttl=118 time=7.65 ms
+# 64 bytes from 192.168.3.200: icmp_seq=2 ttl=118 time=5.13 ms</code></pre>
+<h3 id="culprit-systemd-resolved">Culprit systemd-resolved<a class="headerlink" href="#culprit-systemd-resolved" title="Permanent link">&para;</a></h3>
+<p>It looks like the VPN software does not play nicely with <strong>systemd-resolved</strong>.
+This service is a name resolution manager, that runs on many Linux
+distributions. It acts as a service for applications and resolves DNS queries.
+From what I have read, many Linux system admins are not that fond of it in the
+slightest.</p>
+<h3 id="turning-off-systemd-resolved">Turning off systemd-resolved<a class="headerlink" href="#turning-off-systemd-resolved" title="Permanent link">&para;</a></h3>
+<p>WARNING!!! you can break your networking in your system if you get any of these
+steps wrong.</p>
+<p>My resolution was to turn it off and switch back to using plain Network Manager
+(the the old way of networking in Linux).</p>
+<p>First, we are going to edit the <strong>/etc/NetworkManager/NetworkManager.conf</strong> file
+and enable dns resolution for the old network manager.</p>
+<pre class="highlight"><code class="language-bash">sudo gedit /etc/NetworkManager/NetworkManager.conf</code></pre>
+<p>Then put the following line in the <strong>[main]</strong> section</p>
+<pre class="highlight"><code>dns=default</code></pre>
+<p>Your file should look as follows, once you are happy with the file changes
+<strong>Save</strong> and close the file.</p>
+<p><img alt="" src="../../img/2022-12-10/systemd-resolved/edit-network-manager.png" /></p>
+<p>Now let us turn off the systemd-resolved service, fix the bad symbolic link for
+/etc/resolv.conf and restart the network manager.</p>
+<pre class="highlight"><code class="language-bash">sudo systemctl disable systemd-resolved
+sudo systemctl stop systemd-resolved
+sudo systemctl restart NetworkManager</code></pre>
+<p>Now we need to reconfigure the old resolveconf package.</p>
+<pre class="highlight"><code class="language-bash">sudo rm /etc/resolv.conf
+sudo dpkg-reconfigure resolvconf</code></pre>
+<p>On this screen press <strong>TAB</strong> to highlight the <strong>OK</strong> button and press <strong>ENTER</strong>.</p>
+<p><img alt="" src="../../img/2022-12-10/systemd-resolved/re-configure-resolv-conf-1.png" /></p>
+<p>Now you'll get this screen, just hit <strong>ENTER</strong> again.</p>
+<p><img alt="" src="../../img/2022-12-10/systemd-resolved/re-configure-resolv-conf-2.png" /></p>
+<p>On this screen press <strong>TAB</strong> to highlight the <strong>OK</strong> button and press <strong>ENTER</strong>.</p>
+<p>Reboot your machine.</p>
+<p>Now when you connect to your VPN you should be able to use the domain name
+rather than the IP address because when your VPN software writes its entries
+into the /etc/resolv.conf file.</p>
+<h2 id="rdp-with-remmina">RDP with Remmina<a class="headerlink" href="#rdp-with-remmina" title="Permanent link">&para;</a></h2>
+<p><strong>Remmina</strong> is your Linux alternative to Windows Remote Desktop.</p>
+<p>To install <strong>Remmina</strong>, you are just going to use the following <strong>Terminal</strong>
+command.</p>
+<pre class="highlight"><code class="language-bash">sudo apt update
+sudo apt install -y remmina</code></pre>
+<p>Now open <strong>Remmina</strong> from your application launcher.</p>
+<p><img alt="" src="../../img/2022-12-10/remmina/launch-reminna.png" /></p>
+<p>Fill in the name of the server you want to RDP and press Enter.</p>
+<p><img alt="" src="../../img/2022-12-10/remmina/remmina-use.png" /></p>
+<p>Note that <strong>Remmina</strong> can also support the <strong>VNC</strong> and <strong>SSH</strong> protocols.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>As you may have noticed working with VPNs in Pop!_OS is rather challenging.
+Fortunately, you can use one VPN application for connecting to virtually any VPN
+protocol.</p>
+<h2 id="what-is-next">What is Next<a class="headerlink" href="#what-is-next" title="Permanent link">&para;</a></h2>
+<p>Now that we have VPNs and RDP working. The next issue I encountered was trying
+to copy files over my RDP sessions. I didn't come right with this, but found a
+work-around using the samba protocol. We'll be looking at this next.</p>
 
 
 
