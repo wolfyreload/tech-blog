@@ -1,0 +1,528 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Mike's Tech Tips">
+      
+      
+        <meta name="author" content="Michael van Antwerpen">
+      
+      
+        <link rel="canonical" href="https://wolfyreload.github.io/tech-blog/blog/2023-12-05-angular/">
+      
+      
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+    
+    
+      
+        <title>2023 12 05 angular - Mike's Tech Tips</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-header__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mike's Tech Tips
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2023 12 05 angular
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wolfyreload/tech-blog.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mike&#39;s Tech Tips" class="md-nav__button md-logo" aria-label="Mike's Tech Tips" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Mike's Tech Tips
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wolfyreload/tech-blog.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-15-terraria-dedicated-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating A Dedicated Cloud Server For Terraria In Azure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2021-01-27-manictime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Taming Your Timesheet With ManicTime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-11-19-windows-to-linux.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ditching Windows and Switching to Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dont-use-apt-to-install-nodejs-and-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't use apt to install Node.js and npm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-nodejs-with-nvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Node.js with NVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-use-case-upgrading-an-angular-7-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example use case: Upgrading an Angular 7 app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-bashrc-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the .bashrc file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>2023 12 05 angular</h1>
+
+<p><img alt="" src="../../img/2023-12-05/heading-picture.png" /></p>
+<p>If you are developing web frontends, you likely use React, Angular, or Vue.js. These JavaScript frameworks are commonly used to create interactive and dynamic web user interfaces. Regardless of the chosen framework, you will need Node.js to run these applications. </p>
+<p>This guide will cover setting up your frontend development environment in Pop!_OS. The instructions provided here are also applicable to Ubuntu 22.04.</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Skill level required: Junior to Intermediate Developer</p>
+<p>This guide focuses on why you should not install Node.js directly via apt and instead use NVM (Node Version Manager). You will often need different versions of Node.js for different projects. For example, an older project might require an older version of Node.js, while a newer project might require a newer version.</p>
+<p>By the end of this guide you should have NVM installed and be able to continue your front end development journey on Pop!_OS.</p>
+<h2 id="dont-use-apt-to-install-nodejs-and-npm">Don't use apt to install Node.js and npm<a class="headerlink" href="#dont-use-apt-to-install-nodejs-and-npm" title="Permanent link">&para;</a></h2>
+<p>Typically, you'll install most software on Pop!_OS and Ubuntu using apt as it's a very simple way to install 1000s of software in the Linux world.</p>
+<p>So you'd be tempted to just install Node.js and npm via apt. Do not do this. Avoid installing Node.js and npm via apt for the following reasons:</p>
+<ul>
+<li>Outdated Node.js Version: The apt sources on Ubuntu and Pop!_OS provide Node.js v12.22.9, which is an outdated version released in January 2022. This outdated version of Node.js does not work with the latest version of Angular.</li>
+<li>Permission Issues with npm: Installing npm via apt causes it to store files in /usr/local/lib/node_modules, a system path that requires root privileges for writing. This necessitates using sudo with every npm install command, including those within Angular projects. Additionally, building Angular projects with sudo grants ownership of the built files to the root account, restricting access for non-root users.</li>
+<li>Variable Angular Requirements: Different Angular projects may have varying dependencies on specific Angular and Node.js versions. Simply installing the latest Node.js version may not be good enough for all projects.</li>
+</ul>
+<h2 id="installing-nodejs-with-nvm">Installing Node.js with NVM<a class="headerlink" href="#installing-nodejs-with-nvm" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/nvm-sh/nvm">NVM</a> stands for Node Version Manager, and it works with most flavors of Linux and macOS. NVM allows you to install multiple versions of Node at the same time and to very easily switch between them. This is extremely helpful if you have multiple projects each of which are using different versions of Angular. By using NVM you can simply switch to the right version of Node.js to build the project that you are trying to build.</p>
+<p>On a side note there is an excellent port of NVM called <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a> if you want to use NVM but are stuck with Windows.  </p>
+<p>Additionally, NVM runs from your /home/your-user-name/.nvm folder and runs under your user account, so you don't have to use sudo commands which means that you won't run into permission issues.</p>
+<p>To install NVM we simply run the following command</p>
+<pre class="highlight"><code class="language-bash">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash</code></pre>
+<p>the NVM installer adds additional lines to your .bashrc file (more information on this in the <a href="#what-is-the-bashrc-file">Appendix</a>) so that the NVM script is accessible from your path. You can either just close your terminal window and start a new one for this change to take effect OR you can just use the <strong>source</strong> command below.</p>
+<pre class="highlight"><code class="language-bash">source ~/.bashrc</code></pre>
+<p>Confirm that NVM is installed</p>
+<pre class="highlight"><code class="language-bash">nvm --version
+# returns: 0.39.5 (or newer if you have installed a newer version)</code></pre>
+<p>Installing the latest lts version of Node.js</p>
+<pre class="highlight"><code class="language-bash">nvm install --lts</code></pre>
+<p>Using the latest version of Node.js</p>
+<pre class="highlight"><code class="language-bash">nvm use --lts</code></pre>
+<p>I use Node.js with Angular and installing Angular works as expected with the following command.</p>
+<pre class="highlight"><code class="language-bash">npm install --global @angular/cli</code></pre>
+<h2 id="example-use-case-upgrading-an-angular-7-app">Example use case: Upgrading an Angular 7 app<a class="headerlink" href="#example-use-case-upgrading-an-angular-7-app" title="Permanent link">&para;</a></h2>
+<p>In the next few weeks, I'm going to be inheriting an application that is using Angular 7. Now Angular 7 is no longer supported (it's support ended in 2019), and I'll need to upgrade this application all way to at least Angular 15.</p>
+<p>Now I can check which version of node works with which version of Angular using <a href="https://angular.io/guide/versions">https://angular.io/guide/versions</a></p>
+<p>I can see that I'll need Node.js 10.9.0 to build this Angular 7 app, which I'll install and use with the following.</p>
+<pre class="highlight"><code class="language-bash">nvm install 10.9.0
+nvm use 10.9.0</code></pre>
+<p>Then I'd read the Angular upgrade instructions on <a href="https://update.angular.io/">https://update.angular.io/</a> which would lead me to run the following </p>
+<pre class="highlight"><code class="language-bash">NG_DISABLE_VERSION_CHECK=1 npx @angular/cli@8 update @angular/cli@8 @angular/core@8</code></pre>
+<p>Then it's just a matter of testing and then repeating these steps all the way up to Angular 15. By using NVM I can very easily switch to the versions of the Angular CLI and the node that I need to complete this upgrade without having to uninstall and re-install node and npm packages constantly as I slowly upgrade the project.</p>
+<h2 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-the-bashrc-file">What is the .bashrc file<a class="headerlink" href="#what-is-the-bashrc-file" title="Permanent link">&para;</a></h3>
+<p>The .bashrc file is a shell script that Bash executes whenever it is initiated. This means that the commands and settings in the .bashrc file will be applied every time you open a new terminal window. The .bashrc file is located in the user's home directory, and it is only accessible to that user.</p>
+<p>The .bashrc file can be used to configure a variety of settings, including:</p>
+<ul>
+<li>Aliases: Aliases are shortcuts for longer commands. For example, you could create an alias called ll that would run the ls -l command.</li>
+<li>Variables: Variables can be used to store values that can be used in commands. The most common Variable being the PATH variable for allowing you to run executables from another location from the current directory</li>
+<li>Functions: Functions are reusable blocks of code that can be called from other commands. For example, you could create a function that would generate a random number.</li>
+</ul>
+<p>Here are some examples of how you can use the .bashrc file:</p>
+<p>Create an alias for the ls command (which is much more useful than the default ls command):</p>
+<pre class="highlight"><code class="language-bash">alias ll='ls -l'</code></pre>
+<p>Adding a new folder /opt/camunda-modeler to the PATH this lets me execute the executables in the /opt/camunda-modeler from any folder</p>
+<pre class="highlight"><code class="language-bash">export PATH=$PATH:/opt/camunda-modeler</code></pre>
+<p>Create a function to generate a random number:</p>
+<pre class="highlight"><code class="language-bash">random_number() {
+  echo $RANDOM
+}</code></pre>
+<p>These are just a few examples of the many things you can do with the .bashrc file. For more information, please refer to the <a href="https://www.gnu.org/software/bash/manual/bash.html">Bash documentation</a>.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>You should now have a working Node.js environment in Pop!_OS (or Ubuntu 22.04).</p>
+<p>The apt tool is useful for installing large amounts of software in the Linux/Debian ecosystem. However, it's not always the best way to install developer tools, as sometimes the packages are quite out of date.</p>
+<p>We've learnt that it's better to use <a href="https://github.com/nvm-sh/nvm">NVM</a> (Node Version Manager) to install and switch between different node versions without having to uninstall and reinstall Node.js.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Michael van Antwerpen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+    
+  </body>
+</html>
